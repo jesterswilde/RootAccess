@@ -18,6 +18,15 @@ public class Node : MonoBehaviour
     List<GameProcess> processes;
     [SerializeField, ReadOnly]
     List<Connection> connections;
+    [SerializeField]
+    int security = 30;
+    public int Security => security;
+    [SerializeField]
+    List<Hacks> adminVulnerabilities;
+    public List<Hacks> AdminVulnerabilities => adminVulnerabilities;
+    [SerializeField]
+    List<Hacks> rootVulnerabilities;
+    public List<Hacks> RootVulnerabilities => rootVulnerabilities;
     public List<GameProcess> Processes => processes;
     public void ElevateRole(Permission perm)
     {

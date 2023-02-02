@@ -10,7 +10,9 @@ public class PRG_Ls : GameProgram
         if (term.Node == null)
             return new CommandResult() { Text = $"{TColor.Error} LS only works inside of nodes. Try inv to view your local files and programs {TColor.Close}" };
         string files = $"Discoverd files on {term.Node.Name}\n";
-        files += term.Node.Files.Aggregate("", (words, f) => {
+        files += term.Node.Files
+            .Where(f => f.IsFound)
+            .Aggregate("", (words, f) => {
             var col = term.Node.Role.AccessColor(f.permissionRequired);
             return $"{words}    {col} {f.FileName} {TColor.Close}";
          });
