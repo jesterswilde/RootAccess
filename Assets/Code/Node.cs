@@ -1,57 +1,45 @@
-﻿using System.Collections.Generic;
+﻿using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
 
 public class Node : MonoBehaviour
 {
-}
-public class Connection : MonoBehaviour
-{
     [SerializeField]
-    Node node1;
+    string nodeName;
+    public string Name => nodeName;
     [SerializeField]
-    Node node2;
+    Permission role = Permission.Guest;
+    public Permission Role => role;
 
-    private void OnDrawGizmos()
+    [SerializeField, ReadOnly]
+    List<GameFile> files;
+    [SerializeField, ReadOnly]
+    List<GameProcess> processes;
+    [SerializeField, ReadOnly]
+    List<Connection> connections;
+    public List<GameProcess> Processes => processes;
+    public void ElevateRole(Permission perm)
     {
-        List<GameObject> gos = new List<GameObject>();
-        gos.Add(gameObject);
-        if(node1 != null)
-            gos.AddRange(node1.transform.GetLineage());
-        if(node2 != null)
-            gos.AddRange(node2.transform.GetLineage());
-
-        bool shouldHighlight = gos.Any(go => Selection.Contains(go.GetInstanceID()));
-        if (!shouldHighlight)
-            return;
-        if(node1 != null)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawLine(node1.transform.position, transform.position);
-        }
-        if(node2 != null)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawLine(node2.transform.position, transform.position);
-        }
+        role = perm;
     }
-}
-public class GraphManager : MonoBehaviour
-{
-    static GraphManager T;
-
-
+    public GameProcess StartProcess(string programName, GameFile target, int finishedAt)
+    {
+        var process = processes.Find(p => p.Program == programName && p.Target == target);
+        if (process != null)
+            return process;
+        process = new GameProcess() { node = this, FinishedAt = finishedAt, Program = programName, Target = target, WorkDone = 0, IsIdle = false };
+        Debug.Log($"{process.Program} {process.IsIdle}");
+        processes.Add(process);
+        return process;
+    }
+    public void EndProcess(GameProcess process)
+    {
+        processes.Remove(process);
+    }
+    public List<GameFile> Files => files;
     private void Awake()
     {
-        T = this;
-    }
-}
-
-public class Terminal
-{
-    public void Parse(string words)
-    {
-        var keys = words.Split(' ').ToArray();
+        files = GetComponentsInChildren<GameFile>().ToList();
     }
 }

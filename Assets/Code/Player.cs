@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     float yMotion = 0;
     [SerializeField]
     Detector groundDetector;
+    bool isSprinting;
     bool isGrounded => groundDetector.IsBlocked;
 
     void Move()
@@ -24,18 +25,17 @@ public class Player : MonoBehaviour
         var forward = CameraController.Forward;
         forward.y = 0;
         forward.Normalize();
-        ch.Move((right * norm.x + forward * norm.z) * Time.deltaTime * settings.MoveSpeed + yMotion * Vector3.up * Time.deltaTime);
+        float speed = isSprinting ? settings.SprintSpeed : settings.MoveSpeed;
+        ch.Move((right * norm.x + forward * norm.z) * Time.deltaTime * speed + yMotion * Vector3.up * Time.deltaTime);
     }
     void Jump()
     {
         if (!isGrounded)
         {
             yMotion += Physics.gravity.y * Time.deltaTime;
-            //Debug.Log("Not grounded");
         }
         else
         {
-            //Debug.Log("grounded");
             if(yMotion < 0)
                 yMotion = Physics.gravity.y * Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.Space))
@@ -44,6 +44,8 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+            isSprinting = !isSprinting;
         Jump();
         Move();
     }

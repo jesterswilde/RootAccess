@@ -15,4 +15,4 @@ MonoBehaviour:
   CameraSensitivity: 10
   InvertCamera: 0
   MoveSpeed: 7
-  JumpPower: 100
+  JumpPower: 5

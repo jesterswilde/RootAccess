@@ -28,7 +28,6 @@ public class Detector : SerializedMonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"Collided with {other.gameObject.name}");
         if (mask.Contains(other.gameObject))
             collidingWith.Add(other.gameObject);
         if (collidingWith.Count == 1)
