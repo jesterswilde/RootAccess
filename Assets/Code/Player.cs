@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
         var forward = CameraController.Forward;
         forward.y = 0;
         forward.Normalize();
-        float speed = isSprinting ? settings.SprintSpeed : settings.MoveSpeed;
+        float speed = Input.GetKey(KeyCode.LeftShift) ? settings.SprintSpeed : settings.MoveSpeed;
         ch.Move((right * norm.x + forward * norm.z) * Time.deltaTime * speed + yMotion * Vector3.up * Time.deltaTime);
     }
     void Jump()
@@ -44,8 +44,8 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-            isSprinting = !isSprinting;
+        //if (Input.GetKeyDown(KeyCode.LeftShift))
+        //    isSprinting = !isSprinting;
         Jump();
         Move();
     }

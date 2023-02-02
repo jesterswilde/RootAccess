@@ -36,9 +36,10 @@ public class Terminal : MonoBehaviour
         else 
             HandleCommandResult(program.Run(arguments, this));
     }
+    GameProgram GetLocalProgram(string programName)=>Programs.Find(p => p.FileName == programName);
     void CompleteProgramExecution(string programName, GameFile target)
     {
-        var program = Programs.Find(p => p.FileName == programName);
+        var program = GetLocalProgram(programName);
         var result = program.CompleteProcess(target, this);
         if (result != "")
             OnStdOut?.Invoke($"\n{result}");
@@ -71,6 +72,15 @@ public class Terminal : MonoBehaviour
         if (currentProcess.IsIdle)
             return;
         currentProcess.WorkDone += Power * Time.deltaTime;
+
+        var program = GetLocalProgram(currentProcess.Program);
+        var result = program.TickProcess(currentProcess, this);
+        if (result != "")
+        {
+            Debug.Log(result);
+            OnStdOut?.Invoke(result);
+        }
+
         if(currentProcess.WorkDone > currentProcess.FinishedAt)
         {
             CompleteProgramExecution(currentProcess.Program, currentProcess.Target);
@@ -99,4 +109,5 @@ public class GameProcess
     public GameFile Target;
     public int FinishedAt;
     public float WorkDone;
+    public static GameProcess NullProcess() => new GameProcess() { IsIdle = true };
 }
