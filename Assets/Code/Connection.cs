@@ -15,12 +15,13 @@ public class Connection : MonoBehaviour
     public int WorkToFind => workToFind;
     [SerializeField]
     Permission perm = Permission.Guest;
-    public Permission Perm => perm;
+    public Permission RequiredPerm => perm;
     public Node Node2 => node2;
     public Node GetOther(Node node)=>
         node == Node1 ? Node2 : Node1;
     bool isFound = false;
     public bool IsFound => isFound;
+    public Permission HighestPermission => node2.Role.Greatest(node1.Role);
 
     public void DrawConnection()
     {

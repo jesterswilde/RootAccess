@@ -8,7 +8,7 @@ public class PRG_Hack : GameProgram
     [SerializeField]
     List<Hacks> hackType;
     [SerializeField]
-    float speed;
+    float speed = 1;
 
 
     public override string CompleteProcess(GameFile target, Terminal term)
@@ -21,7 +21,7 @@ public class PRG_Hack : GameProgram
             if (success)
             {
                 term.Node.ElevateRole(Permission.Admin);
-                result = $"{TColor.Access}Success{TColor.Close} | Hack: ${FileName} successfully raised your role to {TColor.Admin}Admin{TColor.Close}";
+                result = $"{TColor.Access}Success{TColor.Close} | Hack: {FileName} successfully raised your role to {TColor.Admin}Admin{TColor.Close}";
             }
         }
         if(curPermission == Permission.Admin)

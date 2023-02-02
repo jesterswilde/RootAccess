@@ -6,6 +6,14 @@
 }
 public static class PermissionExt
 {
+    public static Permission Greatest(this Permission a, Permission b)
+    {
+        if (a == Permission.Root || b == Permission.Root)
+            return Permission.Root;
+        if (b == Permission.Admin || b == Permission.Admin)
+            return Permission.Admin;
+        return Permission.Guest;
+    }
     public static bool HasPermission(this Permission role, Permission perm)
     {
         if (perm == Permission.Guest)

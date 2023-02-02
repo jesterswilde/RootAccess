@@ -9,8 +9,15 @@ public class Node : MonoBehaviour
     string nodeName;
     public string Name => nodeName;
     [SerializeField]
+    string hardware;
+    public string Hardware => hardware;
+    [SerializeField]
+    string software;
+    public string Software => software;
+    [SerializeField]
     Permission role = Permission.Guest;
     public Permission Role => role;
+
 
     [SerializeField, ReadOnly]
     List<GameFile> files;
@@ -38,7 +45,6 @@ public class Node : MonoBehaviour
         if (process != null)
             return process;
         process = new GameProcess() { node = this, FinishedAt = finishedAt, Program = programName, Target = target, WorkDone = 0, IsIdle = false };
-        Debug.Log($"{process.Program} {process.IsIdle}");
         processes.Add(process);
         return process;
     }

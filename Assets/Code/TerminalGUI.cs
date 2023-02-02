@@ -20,7 +20,7 @@ public class TerminalGUI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            output.text += $"\n{path.text} {input.text}\n";
+            output.text += $"\n{path.text.Split(" ")[1]} {input.text}\n";
             terminal.ExecuteCommand(input.text);
             input.text = "";
             FocusInput();
@@ -38,9 +38,9 @@ public class TerminalGUI : MonoBehaviour
     void UpdatePath(Node node)
     {
         if (node == null)
-            path.text = "HOME >";
+            path.text = "HOME>";
         else
-            path.text = $"{node.Name} >";
+            path.text = $"# {node.Name}>";
         LayoutRebuilder.ForceRebuildLayoutImmediate(path.transform as RectTransform);
     }
     private void Update()

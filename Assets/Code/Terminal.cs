@@ -12,7 +12,10 @@ public class Terminal : MonoBehaviour
     public List<GameFile> LocalFiles => localFiles;
     [SerializeField]
     Node node;
-    public Node Node => node;
+    public Node Node { get => node; set {
+            node = value;
+            OnNodeChange?.Invoke(node);
+        } }
     [SerializeField, ReadOnly]
     GameProcess currentProcess;
     public GameProcess CurrentProcess { get => currentProcess; set => currentProcess = value; }
@@ -77,7 +80,6 @@ public class Terminal : MonoBehaviour
         var result = program.TickProcess(currentProcess, this);
         if (result != "")
         {
-            Debug.Log(result);
             OnStdOut?.Invoke(result);
         }
 
