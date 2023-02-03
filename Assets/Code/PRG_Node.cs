@@ -6,7 +6,7 @@ public class PRG_Node : GameProgram
 
     public override CommandResult Run(List<string> arguments, Terminal term)
     {
-        string result = $"Node: {term.Node.Name}\nHardware: {term.Node.Hardware}\nSoftware: {term.Node.Software}";
+        string result = $"Node: {term.Node.Name}\nCurrent Role: {term.Node.Role.Color()}{term.Node.Role}{TColor.Close}\nHardware: {term.Node.Hardware}\nSoftware: {term.Node.Software}";
         return new CommandResult() { Text = result };
     }
 }

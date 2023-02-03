@@ -117,6 +117,7 @@ public class TerminalGUI : MonoBehaviour
 
 public class TColor
 {
+    public static string Guest = "<color=\"white\">";
     public static string Error = "<color=\"red\">";
     public static string Access = "<color=\"green\">";
     public static string Admin = "<color=\"yellow\">";

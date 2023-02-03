@@ -22,6 +22,15 @@ public static class PermissionExt
             return role != Permission.Guest;
         return role == Permission.Root;
     }
+    public static string Color(this Permission role)
+    {
+        if (role == Permission.Guest)
+            return TColor.Guest;
+        if (role == Permission.Admin)
+            return TColor.Admin;
+        return TColor.Root;
+
+    }
     public static string AccessColor(this Permission role, Permission perm)
     {
         if (role.HasPermission(perm))
