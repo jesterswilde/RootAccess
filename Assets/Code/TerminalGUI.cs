@@ -14,6 +14,11 @@ public class TerminalGUI : MonoBehaviour
     [SerializeField]
     TMPro.TextMeshProUGUI path;
     [SerializeField]
+    Transform outputParent;
+    [SerializeField]
+    LoadingBar loadingBarPrefab;
+    LoadingBar loadingBar;
+    [SerializeField]
     Terminal terminal;
 
     void Listen()
@@ -42,6 +47,18 @@ public class TerminalGUI : MonoBehaviour
     {
         output.text += text;
     }
+    void OnStartProcess(GameProcess process)
+    {
+        loadingBar = Instantiate(loadingBarPrefab, outputParent);
+    }
+    void OnTickProcess(GameProcess process)
+    {
+        loadingBar.UpdateBar(process);
+    }
+    void OnEndProcess(GameProcess process)
+    {
+        Destroy(loadingBar.gameObject);
+    }
     void UpdatePath(Node node)
     {
         if (node == null)
@@ -58,6 +75,9 @@ public class TerminalGUI : MonoBehaviour
     {
         terminal.OnStdOut += ReadFromStdOut;
         terminal.OnNodeChange += UpdatePath;
+        terminal.OnStartProcess += OnStartProcess;
+        terminal.OnTickProcess += OnTickProcess;
+        terminal.OnEndProcess += OnEndProcess;
         UpdatePath(terminal.Node);
         FocusInput();
     }

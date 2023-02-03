@@ -8,6 +8,9 @@ public class Terminal : MonoBehaviour
 {
     public static Terminal T { get; private set; }
     public event Action<string> OnStdOut;
+    public event Action<GameProcess> OnStartProcess;
+    public event Action<GameProcess> OnEndProcess;
+    public event Action<GameProcess> OnTickProcess;
     [SerializeField]
     List<GameFile> localFiles;
     public List<GameFile> LocalFiles => localFiles;
@@ -77,6 +80,7 @@ public class Terminal : MonoBehaviour
         if (result.Process == null || result.Process.IsIdle)
             return;
         currentProcess = result.Process;
+        OnStartProcess?.Invoke(currentProcess);
     }
     public void AddFile(GameFile file)
     {
@@ -96,9 +100,11 @@ public class Terminal : MonoBehaviour
         {
             OnStdOut?.Invoke(result);
         }
+        OnTickProcess?.Invoke(currentProcess);
 
         if(currentProcess.WorkDone > currentProcess.FinishedAt)
         {
+            OnEndProcess?.Invoke(currentProcess);
             CompleteProgramExecution(currentProcess.Program, currentProcess.Target);
             currentProcess.node.EndProcess(currentProcess);
             currentProcess = new GameProcess() { IsIdle = true};
