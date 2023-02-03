@@ -45,9 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOwned: 0
+  isFound: 0
   fileName: scp
   permissionRequired: 0
   text: 
   man: "Copies file to your local machine for later use.\nUsage: scp <filename> \nThis
     program takes time. More time for larger files."
+  workToFind: 0
   fileSize: 0
+  requiresIdle: 1

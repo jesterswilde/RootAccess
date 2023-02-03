@@ -52,6 +52,6 @@ MonoBehaviour:
   man: 'Hack Type: (here)'
   workToFind: 0
   fileSize: 0
-  requiresIdle: 0
+  requiresIdle: 1
   hackType: 04000000
   speed: 1
