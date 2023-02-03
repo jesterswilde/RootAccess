@@ -52,4 +52,4 @@ MonoBehaviour:
   man: 'Search scans for files on the current node. '
   workToFind: 0
   fileSize: 0
-  requiresIdle: 0
+  requiresIdle: 1

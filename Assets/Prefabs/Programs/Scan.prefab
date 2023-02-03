@@ -52,4 +52,4 @@ MonoBehaviour:
   man: 'Scan searches for nodes connected to your current node. '
   workToFind: 0
   fileSize: 0
-  requiresIdle: 0
+  requiresIdle: 1
