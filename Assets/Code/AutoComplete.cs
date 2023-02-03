@@ -34,8 +34,8 @@ public class AutoComplete
     {
         writtenWord = _wordStart;
         options = term.LocalFiles.Select(f => f.FileName).Where(w => w.StartsWith(_wordStart)).ToList();
-        var nodeNames = term.KnownNodes.Select(n => n.Name);
-        var nodeFiles = term.NodeFiles.Select(f => f.FileName);
+        var nodeNames = term.KnownNodes.Select(n => n.Name).Where(w => w.StartsWith(_wordStart)).ToList();
+        var nodeFiles = term.NodeFiles.Select(f => f.FileName).Where(w => w.StartsWith(_wordStart)).ToList();
         options.AddRange(nodeNames);
         options.AddRange(nodeFiles);
         index = 0;
