@@ -40,6 +40,11 @@ public class TerminalGUI : MonoBehaviour
 
     public void FocusInput()
     {
+        if(input == null)
+        {
+            Debug.Log("Input was destroyed");
+            return;
+        }
         input.ActivateInputField();
         input.Select();
     }
