@@ -9,16 +9,22 @@ public class WorldServer : MonoBehaviour, IInteractable
     Renderer dongleRend;
     public int Power => power;
     Interactable inter;
+    bool hasBeenUsed = false;
 
     public void GotInteracted()
     {
+        if (hasBeenUsed)
+            return;
+        hasBeenUsed = true;
         Terminal.AddServer(this);
         if(dongleRend != null)
-            dongleRend.enabled = false;
+            dongleRend.enabled = true;
         inter.Deactivate();
     }
     private void Awake()
     {
+        if(dongleRend != null)
+            dongleRend.enabled = false;
         inter = GetComponent<Interactable>();
     }
 }
