@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    static CameraController T;
+    public static CameraController T { private set; get; }
+    public static Camera Cam => T.cam;
+
     public static Vector3 Forward => T.transform.forward;
     public static Vector3 Right => T.transform.right;
     [SerializeField]
@@ -34,7 +36,7 @@ public class CameraController : MonoBehaviour
         if (ControlManager.Mode != ControlMode.World || ControlManager.LockView)
             return;
         Rotate();
-        transform.position = Player.Position - offset;
+        transform.position = Player.CamPos;
     }
 
     private void Awake()

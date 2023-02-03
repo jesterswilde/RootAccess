@@ -54,6 +54,7 @@ public class Dial : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        Debug.Log("over dial");
         isHovered = true;
     }
     private void OnMouseExit()
