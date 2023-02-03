@@ -11621,7 +11621,7 @@ PrefabInstance:
     - target: {fileID: 6600720801837891029, guid: e4f4eb1dd22f8944580384fc6c458d70,
         type: 3}
       propertyPath: man
-      value: 'Hack Type: Rot'
+      value: 'Hack Type: Worm'
       objectReference: {fileID: 0}
     - target: {fileID: 6600720801837891029, guid: e4f4eb1dd22f8944580384fc6c458d70,
         type: 3}
