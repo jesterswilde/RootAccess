@@ -45,7 +45,7 @@ public class TerminalGUI : MonoBehaviour
     void UpdatePath(Node node)
     {
         if (node == null)
-            path.text = "HOME>";
+            path.text = "# HOME>";
         else
             path.text = $"# {node.Name}>";
         LayoutRebuilder.ForceRebuildLayoutImmediate(path.transform as RectTransform);

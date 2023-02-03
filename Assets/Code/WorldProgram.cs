@@ -10,6 +10,8 @@ public class WorldProgram : MonoBehaviour, IInteractable
     {
         if (Terminal.T != null)
             Terminal.T.AddFile(filePrefab);
+        else
+            Debug.Log($"tried to add {filePrefab.FileName}");
         inter.Deactivate();
         Destroy(gameObject);
     }
