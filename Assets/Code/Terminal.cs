@@ -29,6 +29,12 @@ public class Terminal : MonoBehaviour
     public bool IsBusy => !currentProcess.IsIdle;
     public event Action<Node> OnNodeChange;
     public List<GameProgram> Programs => localFiles.OfType<GameProgram>().ToList();
+    public List<Node> KnownNodes { get {
+            if (node == null)
+                return new List<Node>();
+            return GraphManager.GetConnections(node).Where(con => con.IsFound).Select(con => con.GetOther(node)).ToList();
+        } }
+    public List<GameFile> NodeFiles => node == null ? new List<GameFile>() : node.Files;
     [SerializeField]
     int power = 10;
     int Power => power;
@@ -120,10 +126,6 @@ public class Terminal : MonoBehaviour
     private void Update()
     {
         RunProcess();
-    }
-    internal static void ViewTerminal()
-    {
-        throw new NotImplementedException();
     }
     private void Start()
     {

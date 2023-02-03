@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class TerminalGUI : MonoBehaviour
 {
+    AutoComplete ac = new AutoComplete();
     [SerializeField]
     string actualText;
     [SerializeField]
@@ -81,7 +83,24 @@ public class TerminalGUI : MonoBehaviour
     }
     private void Update()
     {
+        if (ControlManager.Mode != ControlMode.Terminal)
+            return;
         Listen();
+        if(Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Tab))
+        {
+            ac.Clear();
+        }
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            var words = input.text.Split(" ");
+            if (words.Length == 0)
+                return;
+            var word = words[words.Length - 1];
+            var option = ac.PressedTab(Terminal.T, word);
+            words[words.Length - 1] = option;
+            input.text = string.Join(" ", words);
+            input.caretPosition = input.text.Length + 1;
+        }
     }
     private void Start()
     {
