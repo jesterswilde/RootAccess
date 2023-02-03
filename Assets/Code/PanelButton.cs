@@ -18,6 +18,8 @@ public class PanelButton : MonoBehaviour
     float waitTime;
     [SerializeField]
     float upSpeed;
+    [SerializeField]
+    FixedDisplay display;
     States state = States.Available;
     float timer = 0;
 
@@ -37,6 +39,14 @@ public class PanelButton : MonoBehaviour
             timer = 0;
         }
     }
+
+    internal void Setup(string displayText, Action _onPress)
+    {
+        if (_onPress != null)
+            OnPress += _onPress;
+        display.Set(displayText);
+    }
+
     private void OnMouseExit()
     {
         if (isPressed)
@@ -44,6 +54,14 @@ public class PanelButton : MonoBehaviour
             isPressed = false;
         }
     }
+
+    internal void Reset()
+    {
+        foreach(var d in OnPress.GetInvocationList())
+            OnPress -= (Action)d;
+        display.Clear();
+    }
+
     private void Update()
     {
         if(state == States.MovingDown)
@@ -78,34 +96,5 @@ public class PanelButton : MonoBehaviour
         MovingDown,
         Pressed,
         MovingUp
-    }
-}
-public class Toggle : MonoBehaviour
-{
-    bool isOn = false;
-    [SerializeField]
-    Transform rot;
-    [SerializeField]
-    float minThreshold;
-    [SerializeField]
-    Transform upPos;
-    [SerializeField]
-    Transform downPos;
-
-    public event Action<bool> OnValueChange;
-    public bool Value => isOn;
-
-    private void OnMouseOver()
-    {
-        var speed = Input.mouseScrollDelta.y * (isOn ? 1 : -1);
-        if(speed > minThreshold)
-        {
-            isOn = !isOn;
-            OnValueChange?.Invoke(isOn);
-            if (isOn)
-                rot.forward = upPos.forward;
-            else
-                rot.forward = downPos.forward;
-        }
     }
 }
