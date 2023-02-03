@@ -8,8 +8,11 @@ public class PRG_Tut : GameProgram
     {
         if(arguments.Count == 0)
         {
+            UnityEngine.Debug.Log(term);
+            UnityEngine.Debug.Log(TColor.Access);
+            var nodeName = (term.Node == null) ? "No node" : term.Node.Name;
             string overview = $"Hey! Welcome to the terminal and the {TColor.Access}connected net{TColor.Close}.\n" +
-                $"The net is a series of nodes. You are currently connected to node: {term.Node.Name} " +
+                $"The net is a series of nodes. You are currently connected to node: {nodeName} " +
                 $"Nodes contain files that you can access or copy. Nodes are also connected to other nodes that you can link into to move around. There are lots of cool things out on the {TColor.Access}connected net{TColor.Close} to explore.\n" +
                 $"\nRun 'prg' to list all programs you have. You can use man (short for manual) on any program to find out what they do and how to use them" +
                 $"\nRun 'tut node' to learn more about nodes\nRun 'tut connection' to learn more about connections\nRun 'tut role' to learn more about roles and permissions";

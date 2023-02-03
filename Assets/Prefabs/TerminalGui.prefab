@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7887861123928864265}
   - component: {fileID: 7887861123928864266}
   - component: {fileID: 7887861123928864263}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 7887861124060994793}
   - component: {fileID: 7887861124060994791}
   - component: {fileID: 7887861124060994792}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 7887861124272963221}
   - component: {fileID: 7887861124272963219}
   - component: {fileID: 7887861124272963220}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: TerminalGui
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,7 +438,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7887861124436912589}
   - component: {fileID: 7887861124436912588}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Text Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -492,7 +492,7 @@ GameObject:
   - component: {fileID: 7887861124981837615}
   - component: {fileID: 7887861124981837613}
   - component: {fileID: 7887861124981837614}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Output
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -556,7 +556,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4292209106
   m_fontColor: {r: 0.8250648, g: 0.9150943, b: 0.8354234, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -628,7 +628,7 @@ GameObject:
   - component: {fileID: 7887861125019658054}
   - component: {fileID: 7887861125019658055}
   - component: {fileID: 7887861125019658053}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -776,7 +776,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7887861125327026245}
   - component: {fileID: 7887861125327026244}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: CommandLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -843,7 +843,7 @@ GameObject:
   - component: {fileID: 7887861125693521966}
   - component: {fileID: 7887861125693521967}
   - component: {fileID: 7887861125693521968}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Placeholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
