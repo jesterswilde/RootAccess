@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -25,6 +26,13 @@ public class TerminalGUI : MonoBehaviour
             FocusInput();
         }
     }
+
+    internal TerminalGUI Attach(Terminal t)
+    {
+        terminal = t;
+        return this;
+    }
+
     public void FocusInput()
     {
         input.ActivateInputField();

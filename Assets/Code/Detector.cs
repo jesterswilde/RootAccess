@@ -43,8 +43,8 @@ public class Detector : SerializedMonoBehaviour
             collidingWith.Remove(other.gameObject);
         if (collidingWith.Count == 0)
         {
-            BlockedEvent?.Invoke();
-            OnBlocked?.Invoke();
+            UnblockedEvent?.Invoke();
+            OnUnblocked?.Invoke();
         }
     }
 }

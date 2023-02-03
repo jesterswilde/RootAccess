@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Terminal : MonoBehaviour
 {
+    public static Terminal T { get; private set; }
     public event Action<string> OnStdOut;
     [SerializeField]
     List<GameFile> localFiles;
@@ -16,6 +17,8 @@ public class Terminal : MonoBehaviour
             node = value;
             OnNodeChange?.Invoke(node);
         } }
+
+
     [SerializeField, ReadOnly]
     GameProcess currentProcess;
     public GameProcess CurrentProcess { get => currentProcess; set => currentProcess = value; }
@@ -47,6 +50,17 @@ public class Terminal : MonoBehaviour
         if (result != "")
             OnStdOut?.Invoke($"\n{result}");
     }
+
+    internal static void AddServer(WorldServer worldServer)
+    {
+        if (T == null)
+        {
+            Debug.LogWarning("Not terminal in game, cannot increase it's power");
+            return;
+        }
+        T.power += worldServer.Power;
+    }
+
     void HandleCommandResult(CommandResult result)
     {
         TryPrintCommand(result);
@@ -94,11 +108,19 @@ public class Terminal : MonoBehaviour
     {
         RunProcess();
     }
+    internal static void ViewTerminal()
+    {
+        throw new NotImplementedException();
+    }
     private void Start()
     {
         var files = GetComponentsInChildren<GameFile>().ToList();
         LocalFiles.AddRange(files);
         currentProcess = new GameProcess() { IsIdle = true };
+    }
+    private void Awake()
+    {
+        T = this;
     }
 }
 

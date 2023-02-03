@@ -44,8 +44,8 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.LeftShift))
-        //    isSprinting = !isSprinting;
+        if (ControlManager.Mode != ControlMode.World)
+            return;
         Jump();
         Move();
     }
