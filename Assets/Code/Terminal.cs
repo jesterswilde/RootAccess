@@ -12,6 +12,10 @@ public class Terminal : MonoBehaviour
     public event Action<GameProcess> OnEndProcess;
     public event Action<GameProcess> OnTickProcess;
     [SerializeField]
+    ControlPanel powerBrick;
+    public static ControlPanel PowerBrick => T.powerBrick;
+
+    [SerializeField]
     List<GameFile> localFiles;
     public List<GameFile> LocalFiles => localFiles;
     [SerializeField]

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class TankPlayer : ControlFile
+public class Tank : MonoBehaviour
 {
     [SerializeField]
     Transform shellPrefab;
@@ -14,17 +14,11 @@ public class TankPlayer : ControlFile
     float maxSpeed;
     [SerializeField]
     float maxTurn;
-    [SerializeField]
-    ControlPanel conPan;
-    [SerializeField]
-    Transform tankTrans;
     float curSpeed;
     float curTurn;
     bool isOn;
-
-    public override bool CanBeCopied => throw new System.NotImplementedException();
-
-    void Fire()
+    bool isPlayerControlled = false;
+    public void Fire()
     {
         var explosion = Instantiate(explosionPrefab);
         explosion.transform.forward = explosionSpot.forward;
@@ -33,41 +27,28 @@ public class TankPlayer : ControlFile
         shell.transform.forward = shellSpot.forward;
         shell.transform.position = shellSpot.position;
     }
-    void TurnOn(bool _isOn)=>
+    public void TurnOn(bool _isOn)=>
         isOn = _isOn;
-    void SetSpeed(float speed) {
+    public void SetSpeed(float speed) {
         curSpeed = speed * -1 * maxSpeed;
     }
-    void SetTurn(float turn)
+    public void SetTurn(float turn)
     {
         curTurn = turn * maxTurn;
     }
-    public override void AttachToControlPanel(ControlPanel powerbrick)
-    {
-        powerbrick.LinkToToggle(0, "ON", TurnOn);
-        powerbrick.LinkToLever(0, "SPD", SetSpeed);
-        powerbrick.LinkToLever(1, "TURN", SetTurn);
-        powerbrick.LinkToButton(0, "CANN", Fire);
-    }
-
     private void Move()
     {
         transform.Rotate(Vector3.up, curTurn * Time.deltaTime);
         transform.position += transform.forward * curSpeed * Time.deltaTime;
     }
-    private void Start()
+    public void SetPlayerControlled(bool _playerControlled)
     {
-        AttachToControlPanel(conPan);
+        isPlayerControlled = _playerControlled;
     }
     private void Update()
     {
         if (!isOn)
             return;
         Move();
-    }
-
-    public override void DetachFromControlPanel(ControlPanel powerbrick)
-    {
-        throw new System.NotImplementedException();
     }
 }
