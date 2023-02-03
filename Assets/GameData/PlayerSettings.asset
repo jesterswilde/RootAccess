@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea89e35c996488f4ba38f8fdbe1a1202, type: 3}
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
-  CameraSensitivity: 8
+  CameraSensitivity: 5
   InvertCamera: 0
   MoveSpeed: 8
   SprintSpeed: 15
