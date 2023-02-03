@@ -9,7 +9,8 @@ public class PRG_Search : GameProgram
     public override CommandResult Run(List<string> arguments, Terminal term)
     {
         var files = term.Node.Files;
-        var maxWork = files.Max(f => f.WorkToFind);
+        
+        var maxWork = files.Count == 0 ? 0 : files.Max(f => f.WorkToFind);
         return new CommandResult() {
             Text = $"Starting search of node: {term.Node.Name}",
             Process = new GameProcess() {
