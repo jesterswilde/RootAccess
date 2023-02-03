@@ -86,7 +86,8 @@ public class TerminalGUI : MonoBehaviour
         terminal.OnTickProcess += OnTickProcess;
         terminal.OnEndProcess += OnEndProcess;
         UpdatePath(terminal.Node);
-        FocusInput();
+        //FocusInput();
+        ControlManager.OnModeChange += OnModeChange;
     }
 }
 
