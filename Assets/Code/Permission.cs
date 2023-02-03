@@ -10,7 +10,7 @@ public static class PermissionExt
     {
         if (a == Permission.Root || b == Permission.Root)
             return Permission.Root;
-        if (b == Permission.Admin || b == Permission.Admin)
+        if (a == Permission.Admin || b == Permission.Admin)
             return Permission.Admin;
         return Permission.Guest;
     }

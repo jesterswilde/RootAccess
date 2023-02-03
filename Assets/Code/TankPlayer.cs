@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class TankPlayer : MonoBehaviour
+public class TankPlayer : ControlFile
 {
     [SerializeField]
     Transform shellPrefab;
@@ -16,9 +16,13 @@ public class TankPlayer : MonoBehaviour
     float maxTurn;
     [SerializeField]
     ControlPanel conPan;
+    [SerializeField]
+    Transform tankTrans;
     float curSpeed;
     float curTurn;
     bool isOn;
+
+    public override bool CanBeCopied => throw new System.NotImplementedException();
 
     void Fire()
     {
@@ -38,7 +42,7 @@ public class TankPlayer : MonoBehaviour
     {
         curTurn = turn * maxTurn;
     }
-    public void AttachToControlPanel(ControlPanel powerbrick)
+    public override void AttachToControlPanel(ControlPanel powerbrick)
     {
         powerbrick.LinkToToggle(0, "ON", TurnOn);
         powerbrick.LinkToLever(0, "SPD", SetSpeed);
@@ -60,5 +64,10 @@ public class TankPlayer : MonoBehaviour
         if (!isOn)
             return;
         Move();
+    }
+
+    public override void DetachFromControlPanel(ControlPanel powerbrick)
+    {
+        throw new System.NotImplementedException();
     }
 }
