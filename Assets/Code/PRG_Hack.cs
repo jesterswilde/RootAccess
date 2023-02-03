@@ -22,6 +22,7 @@ public class PRG_Hack : GameProgram
             {
                 term.Node.ElevateRole(Permission.Admin);
                 result = $"{TColor.Access}Success{TColor.Close} | Hack: {FileName} successfully raised your role to {TColor.Admin}Admin{TColor.Close}";
+                curPermission = term.Node.Role;
             }
         }
         if(curPermission == Permission.Admin)
