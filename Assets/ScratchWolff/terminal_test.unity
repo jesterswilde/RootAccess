@@ -542,9 +542,9 @@ Transform:
   - {fileID: 6251021739814597655}
   - {fileID: 915609510}
   - {fileID: 1156728720}
-  - {fileID: 1841765634}
   - {fileID: 1865124061}
   - {fileID: 2067725205}
+  - {fileID: 1961894571}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -807,8 +807,8 @@ MonoBehaviour:
   processes: []
   connections: []
   security: 30
-  adminVulnerabilities: 
-  rootVulnerabilities: 
+  adminVulnerabilities: 0000000002000000
+  rootVulnerabilities: 0000000003000000
 --- !u!4 &461033903
 Transform:
   m_ObjectHideFlags: 0
@@ -2808,13 +2808,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841765633}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -526.7308, y: 174.34502, z: 256.9751}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 357026288}
-  m_RootOrder: 11
+  m_Father: {fileID: 2096314906}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1841765635
 MonoBehaviour:
@@ -2840,7 +2840,7 @@ MonoBehaviour:
   workToFind: 0
   fileSize: 0
   requiresIdle: 0
-  hackType: 02000000
+  hackType: 0200000000000000
   speed: 1
 --- !u!1001 &1853375436
 PrefabInstance:
@@ -3071,7 +3071,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 357026288}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1865124062
 MonoBehaviour:
@@ -3102,6 +3102,60 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8488996532646339077}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1961894570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1961894571}
+  - component: {fileID: 1961894572}
+  m_Layer: 0
+  m_Name: Tutorial
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1961894571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961894570}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 357026288}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1961894572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961894570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f9e1c1d0b0d65c408081b83f646242f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsOwned: 0
+  isFound: 0
+  fileName: tut
+  permissionRequired: 0
+  text: 
+  man: 'This is a tutoria to help explain the terminal and nodes. You can Run ''tut''
+    by itself for an overview. '
+  workToFind: 0
+  fileSize: 0
+  requiresIdle: 0
 --- !u!1 &2009465771
 GameObject:
   m_ObjectHideFlags: 0
@@ -3475,7 +3529,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 357026288}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2067725206
 MonoBehaviour:
@@ -3554,6 +3608,7 @@ Transform:
   - {fileID: 1512373521}
   - {fileID: 365240050}
   - {fileID: 1157426050}
+  - {fileID: 1841765634}
   m_Father: {fileID: 2062071741}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

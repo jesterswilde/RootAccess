@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using Febucci;
 
 public class TerminalGUI : MonoBehaviour
 {
@@ -53,7 +52,6 @@ public class TerminalGUI : MonoBehaviour
         terminal.OnNodeChange += UpdatePath;
         UpdatePath(terminal.Node);
         FocusInput();
-        //Febucci.UI.TextAnimator.EnableAppearances(false);
     }
 }
 

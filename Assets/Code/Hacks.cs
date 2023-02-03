@@ -4,5 +4,5 @@
     root_kit,
     mulch,
     aphid,
-    mite,
+    rot,
 }
