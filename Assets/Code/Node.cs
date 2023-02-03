@@ -14,7 +14,7 @@ public class Node : MonoBehaviour
     [SerializeField]
     string software;
     public string Software => software;
-    [SerializeField]
+    [SerializeField, ReadOnly]
     Permission role = Permission.Guest;
     public Permission Role => role;
 
