@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8303911270807872470}
   - component: {fileID: 8303911270807872489}
   - component: {fileID: 8303911270807872488}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: terminal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &8303911271098357546
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 8303911271098357526}
   - component: {fileID: 8303911271098357545}
   - component: {fileID: 8303911271098357544}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: nodes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &8303911271716696569
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 8303911271716696550}
   - component: {fileID: 8598422815095959600}
   - component: {fileID: 5865110101309527546}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cyberdeck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8303911271716696569}
-  m_LocalRotation: {x: -0, y: 0.73786384, z: -0, w: 0.6749496}
+  m_LocalRotation: {x: 0, y: 0.73786664, z: 0, w: 0.6749466}
   m_LocalPosition: {x: -78.323, y: 2.91, z: -48.911}
   m_LocalScale: {x: 0.017331421, y: 0.017331421, z: 0.017331421}
   m_ConstrainProportionsScale: 0
@@ -229,7 +229,7 @@ Transform:
   - {fileID: 8410421946011967479}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 95.1, z: 0}
 --- !u!54 &8598422815095959600
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -303,7 +303,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5bdc45d8c45bdd14dbc756890235934d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5bdc45d8c45bdd14dbc756890235934d,
         type: 3}
@@ -313,7 +313,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5bdc45d8c45bdd14dbc756890235934d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5bdc45d8c45bdd14dbc756890235934d,
         type: 3}
@@ -328,7 +328,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5bdc45d8c45bdd14dbc756890235934d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 95.1
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5bdc45d8c45bdd14dbc756890235934d,
         type: 3}
@@ -345,10 +345,20 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 052b13a8426df8541b7747d0af8f684d, type: 2}
+    - target: {fileID: 458911602346814109, guid: 5bdc45d8c45bdd14dbc756890235934d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5bdc45d8c45bdd14dbc756890235934d,
         type: 3}
       propertyPath: m_Name
       value: cyberdeck
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5bdc45d8c45bdd14dbc756890235934d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bdc45d8c45bdd14dbc756890235934d, type: 3}
