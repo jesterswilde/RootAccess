@@ -21,8 +21,8 @@ public class ControlManager : MonoBehaviour
         }
         T.currentMode = mode;
         OnModeChange?.Invoke(mode);
-        if (mode == ControlMode.Terminal)
-            T.ViewTerminal();        
+        //if (mode == ControlMode.Terminal)
+        //    T.ViewTerminal();        
     }
     void ViewTerminal()
     {
@@ -32,6 +32,8 @@ public class ControlManager : MonoBehaviour
     {
         if (Mode == ControlMode.Terminal && Input.GetKeyDown(KeyCode.Escape))
             EnterMode(ControlMode.World);
+        if (Mode == ControlMode.World && Input.GetKeyDown(KeyCode.T))
+            EnterMode(ControlMode.Terminal);
         if (Mode == ControlMode.World && Input.GetKeyDown(KeyCode.F))
             OnInteract?.Invoke();
     }

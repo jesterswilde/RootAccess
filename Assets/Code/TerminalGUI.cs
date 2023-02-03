@@ -67,6 +67,13 @@ public class TerminalGUI : MonoBehaviour
             path.text = $"# {node.Name}>";
         LayoutRebuilder.ForceRebuildLayoutImmediate(path.transform as RectTransform);
     }
+    void OnModeChange(ControlMode mode)
+    {
+        if(mode == ControlMode.World)
+             EventSystem.current.SetSelectedGameObject(null);
+        if (mode == ControlMode.Terminal)
+            FocusInput();
+    }
     private void Update()
     {
         Listen();

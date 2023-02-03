@@ -22,4 +22,13 @@ public class WorldServer : MonoBehaviour, IInteractable
         inter = GetComponent<Interactable>();
     }
 }
+public class WorldNodeEntry : MonoBehaviour, IInteractable
+{
+    [SerializeField]
+    Node node;
+    public void GotInteracted()
+    {
+        Terminal.T.SetNode(node);
+    }
+}
 

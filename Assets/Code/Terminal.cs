@@ -24,6 +24,7 @@ public class Terminal : MonoBehaviour
 
     [SerializeField, ReadOnly]
     GameProcess currentProcess;
+
     public GameProcess CurrentProcess { get => currentProcess; set => currentProcess = value; }
     public bool IsBusy => !currentProcess.IsIdle;
     public event Action<Node> OnNodeChange;
@@ -46,6 +47,12 @@ public class Terminal : MonoBehaviour
             HandleCommandResult(program.Run(arguments, this));
     }
     GameProgram GetLocalProgram(string programName)=>Programs.Find(p => p.FileName == programName);
+    internal void SetNode(Node _node)
+    {
+        node = _node;
+        OnNodeChange?.Invoke(_node);
+    }
+
     void CompleteProgramExecution(string programName, GameFile target)
     {
         var program = GetLocalProgram(programName);
