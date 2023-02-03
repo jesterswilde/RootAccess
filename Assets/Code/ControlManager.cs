@@ -5,6 +5,8 @@ public class ControlManager : MonoBehaviour
 {
     static ControlManager T;
     ControlMode currentMode;
+    bool lockView = false;
+    public static bool LockView { get => T.lockView; set => T.lockView = value; }
     public static ControlMode Mode => T.currentMode;
     public static event Action<ControlMode> OnModeChange;
     public static event Action OnInteract;

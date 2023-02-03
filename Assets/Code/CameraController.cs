@@ -31,7 +31,7 @@ public class CameraController : MonoBehaviour
     }
     private void Update()
     {
-        if (ControlManager.Mode != ControlMode.World)
+        if (ControlManager.Mode != ControlMode.World || ControlManager.LockView)
             return;
         Rotate();
         transform.position = Player.Position - offset;

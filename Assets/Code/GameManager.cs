@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviour
     public static PlayerSettings PlayerSettings => T.playerSettings;
 
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
     private void Awake()
     {
         T = this;
