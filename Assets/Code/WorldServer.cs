@@ -14,7 +14,7 @@ public class WorldServer : MonoBehaviour, IInteractable
     {
         Terminal.AddServer(this);
         if(dongleRend != null)
-            dongleRend.enabled = true;
+            dongleRend.enabled = false;
         inter.Deactivate();
     }
     private void Awake()
