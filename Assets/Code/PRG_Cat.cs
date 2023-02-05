@@ -2,7 +2,6 @@
 
 public class PRG_Cat : GameProgram
 {
-    public override bool CanBeCopied => true;
 
     public override CommandResult Run(List<string> arguments, Terminal term)
     {

@@ -3,8 +3,6 @@ using System.Linq;
 
 public class PRG_Ls : GameProgram
 {
-    public override bool CanBeCopied => true;
-
     public override CommandResult Run(List<string> arguments, Terminal term)
     {
         if (term.Node == null)

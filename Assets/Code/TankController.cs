@@ -2,7 +2,6 @@
 
 public class TankController : ControlFile
 {
-    public override bool CanBeCopied => true;
     [SerializeField]
     Tank tank;
 

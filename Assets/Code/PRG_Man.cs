@@ -2,8 +2,6 @@
 
 public class PRG_Man : GameProgram
 {
-    public override bool CanBeCopied => true;
-
     public override CommandResult Run(List<string> arguments, Terminal term)
     {
         if (arguments.Count == 0)

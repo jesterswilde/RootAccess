@@ -3,8 +3,6 @@ using System.Linq;
 
 public class PRG_Link : GameProgram
 {
-    public override bool CanBeCopied => true;
-
     public override CommandResult Run(List<string> arguments, Terminal term)
     {
         if (arguments.Count == 0)

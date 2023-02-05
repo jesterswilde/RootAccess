@@ -4,8 +4,6 @@ using Sirenix.Utilities;
 
 public class PRG_Search : GameProgram
 {
-    public override bool CanBeCopied => true;
-
     public override CommandResult Run(List<string> arguments, Terminal term)
     {
         var files = term.Node.Files;

@@ -4,7 +4,6 @@ using System.Linq;
 
 public class PRG_Hack : GameProgram
 {
-    public override bool CanBeCopied => true;
     [SerializeField]
     List<Hacks> hackType;
     [SerializeField]

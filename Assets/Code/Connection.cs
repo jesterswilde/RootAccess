@@ -45,24 +45,19 @@ public class Connection : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        List<GameObject> gos = new List<GameObject>();
-        gos.Add(gameObject);
-        if(node1 != null)
-            gos.AddRange(node1.transform.GetLineage());
-        if(node2 != null)
-            gos.AddRange(node2.transform.GetLineage());
-
-        bool shouldHighlight = gos.Any(go => Selection.Contains(go.GetInstanceID()));
-        if (!shouldHighlight)
-            return;
+        Color col = Color.green;
+        if (perm == Permission.Admin)
+            col = Color.yellow;
+        if (perm == Permission.Admin)
+            col = new Color(1, 0.75f, 0);
         if(node1 != null)
         {
-            Gizmos.color = Color.green;
+            Gizmos.color = col;
             Gizmos.DrawLine(node1.transform.position, transform.position);
         }
         if(node2 != null)
         {
-            Gizmos.color = Color.green;
+            Gizmos.color = col;
             Gizmos.DrawLine(node2.transform.position, transform.position);
         }
     }

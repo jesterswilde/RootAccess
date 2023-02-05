@@ -26,7 +26,9 @@ public abstract class GameFile : MonoBehaviour
     [SerializeField]
     int fileSize;
     public int FileSize => fileSize;
-    public abstract bool CanBeCopied { get; }
+    [SerializeField]
+    protected bool canBeCopied = true;
+    public bool CanBeCopied => canBeCopied;
     public string FileName => fileName;
     private void Start()
     {

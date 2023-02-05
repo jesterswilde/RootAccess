@@ -2,8 +2,6 @@
 
 public class PRG_SCP : GameProgram
 {
-    public override bool CanBeCopied => true;
-
     public override string CompleteProcess(GameFile file, Terminal term)
     {
         UnityEngine.Debug.Log("Completed scp");

@@ -2,8 +2,6 @@
 
 public class PRG_Pause : GameProgram
 {
-    public override bool CanBeCopied => true;
-
     public override CommandResult Run(List<string> arguments, Terminal term)
     {
         if (term.CurrentProcess.IsIdle)
