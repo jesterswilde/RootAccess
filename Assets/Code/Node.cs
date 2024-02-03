@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿#pragma warning disable 0649
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -51,6 +52,10 @@ public class Node : MonoBehaviour
     public void EndProcess(GameProcess process)
     {
         processes.Remove(process);
+    }
+    public void AddFile(GameFile file)
+    {
+        files.Add(file);
     }
     public List<GameFile> Files => files;
     private void Awake()

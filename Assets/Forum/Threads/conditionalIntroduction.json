@@ -1,0 +1,19 @@
+{
+    "createdBy": "anthrax",
+    "priority": 1,
+    "threadTitle": "Introductions",
+    "id": "anthraxDoesnotLikeYou",
+    "conditions": [
+        {
+            "condition": "Rep", "user": "anthrax", "rep": 0, "op": "<"
+        },
+        {
+            "condition": "Flag", "flag": "completedObservatory","value": 1,"op": "=="
+        }
+    ],
+    "posts": [
+        {
+            "title": "Introductions",
+            "content": "I'm anthrax, and I don't like you. I'm here to make sure you don't get too comfortable. I'm watching you."
+        }]
+}

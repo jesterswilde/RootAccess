@@ -1,0 +1,37 @@
+.body {
+    background-color: rgb(43, 36, 28);
+    width: 100%;
+    height: 100%;
+}
+
+.text {
+    color: rgb(226, 148, 35);
+}
+
+.threadSummary {
+    flex-grow: 0;
+    background-color: rgba(0, 0, 0, 0.19);
+    border-left-color: rgb(217, 135, 23);
+    border-right-color: rgb(217, 135, 23);
+    border-top-color: rgb(217, 135, 23);
+    border-bottom-color: rgb(217, 135, 23);
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+}
+
+.threadSubtitle {
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0);
+    flex-direction: row;
+    overflow: hidden;
+    flex-wrap: nowrap;
+    -unity-font-style: italic;
+    font-size: 12px;
+}
+
+.threadTitle {
+    font-size: 16px;
+    -unity-font-style: bold;
+}

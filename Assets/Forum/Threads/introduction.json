@@ -1,0 +1,9 @@
+{
+    "id": "1",
+    "priority": 0,
+    "createdBy": "anthrax",
+    "threadTitle": "Introductions",
+    "posts": [
+        {"user": "anthrax", "content": "This is a test post."}
+    ]
+}

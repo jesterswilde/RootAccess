@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UITK/main.uss?fileID=7433441132597879392&amp;guid=37af07c6074a29e4a82ca487d9c84995&amp;type=3#main" />
+    <ui:VisualElement name="Body" class="body text">
+        <ui:VisualElement name="Header" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0);">
+            <ui:Label tabindex="-1" text="CTL Board" display-tooltip-when-elided="true" name="Title" class="text" style="justify-content: flex-start; align-self: center; font-size: 34px; -unity-font-style: bold;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="ThreadContainer" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;" />
+        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
+        <ui:TextField picking-mode="Ignore" label="Text Field" value="filler text" />
+        <ui:Button text="Button" display-tooltip-when-elided="true" />
+    </ui:VisualElement>
+</ui:UXML>
