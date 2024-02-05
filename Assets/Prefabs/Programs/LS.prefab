@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5036210174876879830
 MonoBehaviour:
@@ -41,13 +41,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1085738915222345151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b07169cac4e810e45b2e29f958436498, type: 3}
+  m_Script: {fileID: 11500000, guid: 5754d83ec8486164d84bb9994512d32d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsOwned: 0
+  isFound: 0
   fileName: ls
   permissionRequired: 0
   text: 
-  man: LS prints files and programs that you've found inside the current node.  Use
-    search to find new files if you haven't already.
+  man: "LS, List, prints the contents of a folder, if no path is given, it will deafult
+    ot the current folder. \nUsage: ls <path>"
+  workToFind: 0
   fileSize: 0
+  canBeCopied: 1
+  requiresIdle: 0

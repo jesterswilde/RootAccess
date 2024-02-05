@@ -301,7 +301,7 @@ RectTransform:
   - {fileID: 2786103024293366343}
   - {fileID: 2475643034060662200}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -317,13 +317,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2786103023241792661}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a9b17610fe6aa14bb502b7de51c5b25, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a0958fd4fd0da341aceb1d19e520e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actualText: 
   input: {fileID: 2786103023434957832}
   output: {fileID: 2786103024487562540}
-  path: {fileID: 2786103024458126661}
+  path: {fileID: 0}
   outputParent: {fileID: 2475643034060662200}
   loadingBarPrefab: {fileID: 383881782439199815, guid: 4cb3287c41a9fe44a806ceacda09350f,
     type: 3}

@@ -1,9 +1,11 @@
 ﻿using System;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class ControlManager : MonoBehaviour
 {
     static ControlManager T;
+    [SerializeField, ReadOnly]
     ControlMode currentMode;
     bool lockView = false;
     public static bool LockView { get => T.lockView; set => T.lockView = value; }

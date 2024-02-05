@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6433363529509957375
 MonoBehaviour:
@@ -41,11 +41,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 6433363529509957373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d028ff7c78a8a5448aae1a7715be783a, type: 3}
+  m_Script: {fileID: 11500000, guid: 6346d1a654a3a304fb6045a5c5a1d2c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsOwned: 0
-  fileName: inv
+  isFound: 0
+  fileName: inven
   permissionRequired: 0
   text: 
-  man: 
+  man: 'Prints your terminal''s local files.
+
+    Usage: inventory'
+  workToFind: 0
+  fileSize: 0
+  canBeCopied: 1
+  requiresIdle: 0

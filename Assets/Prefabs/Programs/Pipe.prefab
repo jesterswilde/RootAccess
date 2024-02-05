@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3723861328566291893
+--- !u!1 &793185518590049576
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,51 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5335932222019438609}
-  - component: {fileID: 7130978557564261753}
+  - component: {fileID: 5756375202952734519}
+  - component: {fileID: 779183295220504462}
   m_Layer: 0
-  m_Name: Cat
+  m_Name: Pipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5335932222019438609
+--- !u!4 &5756375202952734519
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3723861328566291893}
+  m_GameObject: {fileID: 793185518590049576}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7130978557564261753
+--- !u!114 &779183295220504462
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3723861328566291893}
+  m_GameObject: {fileID: 793185518590049576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ea65b54d4fda4d479068bde56092aee, type: 3}
+  m_Script: {fileID: 11500000, guid: 29e374246cb6dca40a67be2825aebf33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsOwned: 0
   isFound: 0
-  fileName: Cat
+  fileName: pipe
   permissionRequired: 0
   text: 
-  man: "Prints the contents of a text file. \nUsage: cat <pathToFile>"
+  man: "Pipe connects an output file to an input file. Examples of output files:
+    Cameras, images, videos, music, text files. \nExamples of input files: Monitor,
+    Speaker, Electronic Billboard\nNot all outputs will connect to all inputs.\nUsage:
+    pipe <inputFile> <outputFile>"
   workToFind: 0
   fileSize: 0
   canBeCopied: 1
