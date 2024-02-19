@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.Events;
+using UnityEngine.Animations;
 
 //Uses Contains from UnityExtension layer mask extension method
 

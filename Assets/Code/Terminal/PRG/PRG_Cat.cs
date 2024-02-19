@@ -7,7 +7,7 @@ public class PRG_Cat : GameProgram
     {
         if (arguments.Count == 0)
             return new CommandResult() { Text = $"{TColor.Error} Must supply a file to read{TColor.Close}" };
-        var file = ResolvePath(arguments[0], term);
+        var file = term.GetFile(arguments[0]);
         if(file == null)
             return new CommandResult() { Text = "File Not Found" };
         if (file.Text != "")

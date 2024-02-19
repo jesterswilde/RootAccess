@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; background-color: rgb(33, 51, 49); width: 90%; height: 100%; margin-left: 20px; margin-right: 20px; margin-top: 20px; margin-bottom: 20px; left: 0;">
+    This is a test of <ui:VisualElement> things </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

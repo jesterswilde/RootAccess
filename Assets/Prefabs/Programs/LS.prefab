@@ -45,13 +45,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOwned: 0
-  isFound: 0
-  fileName: ls
+  _isFound: 0
+  _fileName: ls
   permissionRequired: 0
-  text: 
-  man: "LS, List, prints the contents of a folder, if no path is given, it will deafult
-    ot the current folder. \nUsage: ls <path>"
+  _text: 
+  _man: 'Prints out files of a the current node.
+
+    Usage: ls'
   workToFind: 0
-  fileSize: 0
-  canBeCopied: 1
+  _fileSize: 0
+  _canBeCopied: 1
   requiresIdle: 0
+  isSystemProgram: 0
+  aliases: []

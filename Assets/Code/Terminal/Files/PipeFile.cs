@@ -32,7 +32,8 @@ public class PipeFile : GameFile{
             Output.Disconnect(Input);
         }
     }
-    void Start(){
+    protected override void Start(){
+        base.Start();
         if (Input != null && Output != null){
             Connect();
         }

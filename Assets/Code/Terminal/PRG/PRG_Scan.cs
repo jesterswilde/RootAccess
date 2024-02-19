@@ -13,10 +13,10 @@ public class PRG_Scan : GameProgram
         return new CommandResult() {
             Text = $"Starting scan from node: {term.Node.Name}",
             Process = new GameProcess() {
-                FinishedAt = (int)maxWork,
+                WorkRequired = (int)maxWork,
                 node = term.Node,
                 IsIdle = false,
-                Program = "scan",
+                ProgramPath = GetPath(),
             }
         };
     }

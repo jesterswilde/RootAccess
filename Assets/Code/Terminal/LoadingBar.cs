@@ -9,7 +9,7 @@ public class LoadingBar : MonoBehaviour
     int dots = 100;
     public void UpdateBar(GameProcess process)
     {
-        var percent = process.WorkDone / process.FinishedAt;
+        var percent = process.Progress;
         var numBars = percent * dots;
         var result = "[";
         for(int i = 0; i < dots; i++)

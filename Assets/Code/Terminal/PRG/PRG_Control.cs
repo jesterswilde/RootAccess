@@ -6,7 +6,7 @@ public class PRG_Control : GameProgram
     {
         if (Terminal.PowerBrick.IsBusy)
             return new CommandResult() { Text = $"{TColor.Error}Powerbrick is currently already CTRLing something. Use 'free_ctrl' to free your PowerBrick to control something new.{TColor.Close}" };
-        var file = ResolvePath(arguments[0], term);
+        var file = term.GetFile(arguments[0]);
         if (file == null)
             return new CommandResult() { Text = $"{TColor.Error} No file by name of {arguments[0]}{TColor.Close}" };
         if (!(file is ControlFile))

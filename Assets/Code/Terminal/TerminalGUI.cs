@@ -26,8 +26,7 @@ public class TerminalGUI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            output.text += $"\n{path.text.Split(" ")[1]} {input.text}\n";
-            terminal.ExecuteCommand(input.text);
+            terminal.AcceptInput(input.text);
             input.text = "";
             FocusInput();
         }
@@ -55,22 +54,22 @@ public class TerminalGUI : MonoBehaviour
     }
     void OnStartProcess(GameProcess process)
     {
-        loadingBar = Instantiate(loadingBarPrefab, outputParent);
+        if(process.HasLoadingBar)
+            loadingBar = Instantiate(loadingBarPrefab, outputParent);
     }
     void OnTickProcess(GameProcess process)
     {
-        loadingBar.UpdateBar(process);
+        if(process.HasLoadingBar)
+            loadingBar.UpdateBar(process);
     }
     void OnEndProcess(GameProcess process)
     {
-        Destroy(loadingBar.gameObject);
+        if(loadingBar != null)
+            Destroy(loadingBar.gameObject);
     }
     void UpdatePath(Node node)
     {
-        if (node == null)
-            path.text = "# HOME>";
-        else
-            path.text = $"# {node.Name}>";
+        path.text = Terminal.T.Path;
         LayoutRebuilder.ForceRebuildLayoutImmediate(path.transform as RectTransform);
     }
     void OnModeChange(ControlMode mode)

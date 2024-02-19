@@ -8,6 +8,6 @@ public class PRG_Pause : GameProgram
             return new CommandResult() { Text = $"{TColor.Error}No process currently running to pause.{TColor.Close}" };
         var oldProcess = term.CurrentProcess;
         term.CurrentProcess = GameProcess.NullProcess();
-            return new CommandResult() { Text = $"Ended process running {oldProcess.Program}" };
+            return new CommandResult() { Text = $"Ended process running {oldProcess.ProgramPath}" };
     }
 }

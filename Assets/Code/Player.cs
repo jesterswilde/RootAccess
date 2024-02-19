@@ -1,8 +1,9 @@
 ﻿#pragma warning disable 0649
 using UnityEngine;
 using Sirenix.Utilities;
+using UnityEngine.Video;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IMovable
 {
     static Player T;
     PlayerSettings settings => GameManager.PlayerSettings;
@@ -35,8 +36,12 @@ public class Player : MonoBehaviour
     float crouchLerp = 0;
     [SerializeField]
     float crouchLerpSpeed = 0.5f;
+    Vector3 platfromMovement = Vector3.zero;
 
-    void Move()
+    public void Move(Vector3 vec){
+        platfromMovement = vec;
+    }
+    void MoveViaControls()
     {
         var x = Input.GetAxisRaw("Horizontal");
         var z = Input.GetAxisRaw("Vertical");
@@ -50,7 +55,8 @@ public class Player : MonoBehaviour
         forward.y = 0;
         forward.Normalize();
         float speed = Input.GetKey(KeyCode.LeftShift) ? settings.SprintSpeed : settings.MoveSpeed;
-        ch.Move((right * norm.x + forward * norm.z) * Time.deltaTime * speed + yMotion * Vector3.up * Time.deltaTime);
+        ch.Move((right * norm.x + forward * norm.z) * Time.deltaTime * speed + yMotion * Vector3.up * Time.deltaTime + platfromMovement);
+        platfromMovement = Vector3.zero;
     }
     void Jump()
     {
@@ -177,7 +183,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftControl))
             isCrouching = !isCrouching;
         Jump();
-        Move();
+        MoveViaControls();
         Crouching();
         //Ugly as sin. Also where the powerbrick in the air bug lives. 
         BrickPhysTimer();

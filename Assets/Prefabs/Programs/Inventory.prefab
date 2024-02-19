@@ -45,14 +45,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOwned: 0
-  isFound: 0
-  fileName: inven
+  _isFound: 0
+  _fileName: inventory
   permissionRequired: 0
-  text: 
-  man: 'Prints your terminal''s local files.
+  _text: 
+  _man: 'Prints out local files.
 
-    Usage: inventory'
+    Usage: inventory
+
+    Aliases: inven'
   workToFind: 0
-  fileSize: 0
-  canBeCopied: 1
+  _fileSize: 0
+  _canBeCopied: 1
   requiresIdle: 0
+  isSystemProgram: 0
+  aliases:
+  - inven

@@ -7,33 +7,40 @@ public abstract class GameFile : MonoBehaviour
     [HideInInspector]
     public bool IsOwned = false;
     [SerializeField]
-    bool isFound = false;
-    public bool IsFound { get => isFound; set => isFound = value; }
+    bool _isFound = false;
+    public bool IsFound { get => _isFound; set => _isFound = value; }
     [SerializeField]
-    protected string fileName;
+    protected string _fileName;
+    public string FileName { get => _fileName; set => _fileName = value; }
+    public virtual bool MatchesName(string name) => FileName.ToLower() == name.ToLower();
     [SerializeField]
     public Permission permissionRequired;
     public Permission PermissionRequired => permissionRequired;
     [SerializeField]
-    string text;
-    public String Text => text;
+    protected string _text;
+    public String Text => _text;
     [SerializeField, TextArea]
-    string man;
+    string _man;
     [SerializeField]
-    public string Man => man;
+    public string Man => _man;
     [SerializeField]
     int workToFind;
     public int WorkToFind => workToFind;
     [SerializeField]
-    int fileSize;
-    public int FileSize => fileSize;
+    int _fileSize;
+    public int FileSize => _fileSize;
     [SerializeField]
-    protected bool canBeCopied = true;
-    public bool CanBeCopied => canBeCopied;
-    public string FileName => fileName;
-    private void Start()
+    protected bool _canBeCopied = true;
+    public bool CanBeCopied => _canBeCopied;
+    public string GetPath(){
+        var parentNode = GetComponentInParent<Node>();
+        if(parentNode == null)
+            return $"{FileName}";
+        return $"{parentNode.Name}:{FileName}";
+    }
+    protected virtual void Start()
     {
         if (WorkToFind == 0)
-            isFound = true;
+            _isFound = true;
     }
 }

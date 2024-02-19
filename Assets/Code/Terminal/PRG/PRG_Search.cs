@@ -12,10 +12,10 @@ public class PRG_Search : GameProgram
         return new CommandResult() {
             Text = $"Starting search of node: {term.Node.Name}",
             Process = new GameProcess() {
-                FinishedAt = maxWork,
+                WorkRequired = maxWork,
                 node = term.Node,
                 IsIdle = false,
-                Program = "search",
+                ProgramPath = "search",
             }
         };
     }

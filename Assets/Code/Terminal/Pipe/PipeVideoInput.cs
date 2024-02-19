@@ -1,10 +1,11 @@
 #pragma warning disable 0649
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PipeVideoInput : PipeInput{ 
-    public Material Screen { get; set; }
+    public Renderer Screen { get; set; }
     public void SetTexture(Texture texture)
     {
-        Screen.mainTexture = texture;
+        Screen.material.mainTexture = texture;
     }
 }

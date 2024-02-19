@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7130978557564261753
 MonoBehaviour:
@@ -45,12 +45,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOwned: 0
-  isFound: 0
-  fileName: Cat
+  _isFound: 0
+  _fileName: cat
   permissionRequired: 0
-  text: 
-  man: "Prints the contents of a text file. \nUsage: cat <pathToFile>"
+  _text: 
+  _man: "Prints out the contents of a file. \nUsage: cat <filename>"
   workToFind: 0
-  fileSize: 0
-  canBeCopied: 1
+  _fileSize: 0
+  _canBeCopied: 1
   requiresIdle: 0
+  isSystemProgram: 0
+  aliases: []

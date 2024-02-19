@@ -126,4 +126,74 @@ public static class UnityExtensions
             return dict[key];
         return default(V);
     }
+    public static string TitleCase(this string input) {
+        if (string.IsNullOrEmpty(input))
+            return input;
+
+        char[] charArray = input.ToLower().ToCharArray();
+        bool capitalizeNext = true;
+
+        for (int i = 0; i < charArray.Length; i++)
+        {
+            if (capitalizeNext && char.IsLetter(charArray[i]))
+            {
+                charArray[i] = char.ToUpper(charArray[i]);
+                capitalizeNext = false;
+            }
+            else if (charArray[i] == ' ')
+            {
+                capitalizeNext = true;
+            }
+        }
+        return new string(charArray);
+    }
+    public static T MaxBy<T>(this IEnumerable<T> list, Func<T, float> selector)
+    {
+        if(list.Count() == 0)
+            return default(T);
+        T max = default(T);
+        float maxVal = float.MinValue;
+        foreach (var item in list)
+        {
+            var val = selector(item);
+            if(val > maxVal)
+            {
+                maxVal = val;
+                max = item;
+            }
+        }
+        return max;
+    }
+    public static T MaxBy<T>(this IEnumerable<T> list, Func<T, T, float> selector)
+    {
+        if(list.Count() == 0)
+            return default(T);
+        T max = default(T);
+        bool first = true;
+        foreach (var item in list)
+        {
+            if(first)
+            {
+                max = item;
+                first = false;
+                continue;
+            }
+            if(selector(item, max) > 0)
+                max = item;
+        }
+        return max;
+    }
+
+    //From https://stackoverflow.com/questions/49190830/is-it-possible-for-string-split-to-return-tuple
+    public static void Deconstruct<T>(this IList<T> list, out T first, out IList<T> rest) {
+
+        first = list.Count > 0 ? list[0] : default(T); // or throw
+        rest = list.Skip(1).ToList();
+    }
+
+    public static void Deconstruct<T>(this IList<T> list, out T first, out T second, out IList<T> rest) {
+        first = list.Count > 0 ? list[0] : default(T); // or throw
+        second = list.Count > 1 ? list[1] : default(T); // or throw
+        rest = list.Skip(2).ToList();
+    }
 }

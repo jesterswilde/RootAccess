@@ -1,11 +1,9 @@
 #pragma warning disable 0649
 using UnityEngine;
 
-public class MonitorFile : GameFile {
+public class MonitorFile : InputFile {
     [SerializeField]
-    Material screen;
-    public PipeVideoInput Input {get; private set;}
-
+    Renderer screen;
     private void Awake()
     {
         Input = new PipeVideoInput {

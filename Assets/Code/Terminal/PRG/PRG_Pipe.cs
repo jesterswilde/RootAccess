@@ -5,8 +5,8 @@ public class PRG_Pipe : GameProgram
 {
     public override CommandResult Run(List<string> arguments, Terminal term)
     {
-        var o = ResolvePath(arguments[0], term);
-        var i = ResolvePath(arguments[1], term);
+        var o = term.GetFile(arguments[0]);
+        var i = term.GetFile(arguments[1]);
         if(o == null)
             return new CommandResult() { Text = $"{TColor.Error}Output not found{TColor.Close}" };
         if(i == null)
@@ -32,6 +32,8 @@ public class PRG_Pipe : GameProgram
         GameObject go = new GameObject();
         go.name = $"Pipe_{outputFile.FileName}_{inputFile.FileName}";
         var pipe = go.AddComponent<PipeFile>();
+        pipe.FileName = outputFile.FileName + "|" + inputFile.FileName;
+        pipe.IsFound = true;
         pipe.Setup(inputFile.Input, outputFile.Output);
         term.Node.AddFile(pipe);
         return $"Connected ${outputFile.FileName} to ${inputFile.FileName}";

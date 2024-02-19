@@ -2,9 +2,15 @@
     "json.schemas": [
         {
             "fileMatch": [
-                "/Assets/Forum/Threads/*.json",
+                "/Assets/GameData/Forum/Threads/*.json",
             ],
-            "url": "./Assets/Forum/forumSchema.json"
+            "url": "./Assets/GameData/Forum/forumSchema.json"
+        },
+        {
+            "fileMatch": [
+                "/Assets/GameData/Dossier/*.json",
+            ],
+            "url": "./Assets/GameData/Dossier/dossierSchema.json"
         }],
         "workbench.colorTheme": "Default Dark Modern",
         "vim.smartRelativeLine": true,

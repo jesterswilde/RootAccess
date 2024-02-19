@@ -45,12 +45,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOwned: 0
-  isFound: 0
-  fileName: scan
+  _isFound: 0
+  _fileName: scan
   permissionRequired: 0
-  text: 
-  man: 'Scans current node for connections to other nodes. Usage: scan'
+  _text: 
+  _man: 'Scans current node for all nodes connectd to this node. Note, some connections
+    are only availble to users with elevated permissions.
+
+    Usage: scan'
   workToFind: 0
-  fileSize: 0
-  canBeCopied: 1
+  _fileSize: 0
+  _canBeCopied: 1
   requiresIdle: 0
+  isSystemProgram: 0
+  aliases: []

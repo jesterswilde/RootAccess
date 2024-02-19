@@ -1,5 +1,6 @@
 ﻿#pragma warning disable 0649
 using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,16 +16,24 @@ public class Terminal : MonoBehaviour
     [SerializeField]
     ControlPanel powerBrick;
     public static ControlPanel PowerBrick => T.powerBrick;
+    [SerializeField]
+    string _username;
+    [SerializeField]
+    string _terminalName = "HOME";
+    public static string Username => T._username;
 
     [SerializeField]
     List<GameFile> localFiles;
     public List<GameFile> LocalFiles => localFiles;
     [SerializeField]
-    Node node;
-    public Node Node { get => node; set {
-            node = value;
-            OnNodeChange?.Invoke(node);
+    Node _node;
+    public Node Node { get => _node; set {
+            _node = value;
+            OnNodeChange?.Invoke(_node);
         } }
+        public string NodeName => _node == null ? _terminalName : _node.name;
+        public string CurrentUser => _node == null ? _username : _node.CurrentUser.Username;
+        public string Path => $"{CurrentUser}@{NodeName}>";
 
 
     [SerializeField, ReadOnly]
@@ -35,38 +44,92 @@ public class Terminal : MonoBehaviour
     public event Action<Node> OnNodeChange;
     public List<GameProgram> Programs => localFiles.OfType<GameProgram>().ToList();
     public List<Node> KnownNodes { get {
-            if (node == null)
+            if (_node == null)
                 return new List<Node>();
-            return GraphManager.GetConnections(node).Where(con => con.IsFound).Select(con => con.GetOther(node)).ToList();
+            return GraphManager.GetConnections(_node).Where(con => con.IsFound).Select(con => con.GetOther(_node)).ToList();
         } }
-    public List<GameFile> NodeFiles => node == null ? new List<GameFile>() : node.Files;
+    public List<GameFile> NodeFiles => _node == null ? new List<GameFile>() : _node.Files;
     [SerializeField]
     int power = 10;
     int Power => power;
-    public void ExecuteCommand(string command)
+    public void TryPrint(string text)
     {
+        OnStdOut?.Invoke(text);
+    }
+    public void AcceptInput(string command)
+    {
+        if(currentProcess.RequiresUserInput){
+            var program = GetProgram(currentProcess.ProgramPath);
+            program.HandleUserInput(command, currentProcess, this);
+        }
+        else
+            ExecuteCommand(command);
+    }
+    void ExecuteCommand(string command){
+        OnStdOut.Invoke($"\n{Path} {command}");
         var words = command.Split(" ");
         var action = words[0];
         var arguments = words.Skip(1).ToList();
 
         var program = Programs.Find(p => p.FileName == action);
         if (program == null)
-            HandleCommandResult(new CommandResult() { Text = $"{TColor.Error}Command \"{action}\" Not Found {TColor.Close}" });
+            HandleCommandResult(new CommandResult() { Text = $"\n{TColor.Error}Command \"{action}\" Not Found {TColor.Close}" });
         else if(program.RequiresIdle && !currentProcess.IsIdle)
-            HandleCommandResult(new CommandResult() { Text = $"{TColor.Error} Terminal is currently busy. Run `pause` to pause program. You can resume at any time by re-running the same command. {TColor.Close}" });
+            HandleCommandResult(new CommandResult() { Text = $"\n{TColor.Error} Terminal is currently busy. Run `pause` to pause program. You can resume at any time by re-running the same command. {TColor.Close}" });
         else 
             HandleCommandResult(program.Run(arguments, this));
+
     }
-    GameProgram GetLocalProgram(string programName)=>Programs.Find(p => p.FileName == programName);
-    internal void SetNode(Node _node)
+    public GameProgram GetProgram(string programName)=>
+        GetFile(programName, "program") as GameProgram ?? throw new Exception($"Program {programName} not found");
+    public GameFile GetFile(string path, string fileType = "file"){
+        var isGlobal = path.Contains(":");
+        GameFile file;
+        if(isGlobal){ //We have an absolute file path in the form of nodeName:fileName
+            var (nodeName, fileName, _) = path.Split(":");
+            file = GetGlobalFile(fileName, nodeName: nodeName, fileType: fileType);
+            if(file == null)
+                throw new Exception($"{fileType.TitleCase()} {path} not found");
+            return file;
+        }
+
+        //We look up the file in the local directory first then in the global directory
+        file = GetLocalFile(path);
+        if(file != null)
+            return file;
+        file = GetGlobalFile(path, fileType: fileType);
+        if(file == null)
+            throw new Exception($"{fileType.TitleCase()} {path} not found");
+        return file;
+    }
+    GameFile GetGlobalFile(string filename, string nodeName = "", string fileType = "file")
     {
-        node = _node;
-        OnNodeChange?.Invoke(_node);
+        //If no node name is provided, we assume the file is in the current node
+        Node node;
+        if(nodeName == "")
+            node = _node;
+        else
+            node = GraphManager.GetNode(nodeName);
+        if(node == null)
+            return null;
+
+        var file = node.Files.Find(f => f.MatchesName(filename));
+        if(file == null || !file.IsFound)
+            return null;
+        if(!node.Role.HasPermission(file.permissionRequired))
+            throw new Exception($"Permission denied for {filename}");
+        return file;
+    }
+    GameFile GetLocalFile(string fileName)=> Programs.Find(p => p.MatchesName(fileName)) ?? localFiles.Find(f => f.MatchesName(fileName));
+    internal void SetNode(Node node)
+    {
+        _node = node;
+        OnNodeChange?.Invoke(node);
     }
 
     void CompleteProgramExecution(string programName, GameFile target)
     {
-        var program = GetLocalProgram(programName);
+        var program = GetProgram(programName);
         var result = program.CompleteProcess(target, this);
         if (result != "")
             OnStdOut?.Invoke($"\n{result}");
@@ -108,11 +171,11 @@ public class Terminal : MonoBehaviour
     }
     void RunProcess()
     {
-        if (currentProcess.IsIdle)
+        if (currentProcess.IsIdle || currentProcess.RequiresUserInput)
             return;
         currentProcess.WorkDone += Power * Time.deltaTime;
 
-        var program = GetLocalProgram(currentProcess.Program);
+        var program = GetProgram(currentProcess.ProgramPath);
         var result = program.TickProcess(currentProcess, this);
         if (result != "")
         {
@@ -120,10 +183,10 @@ public class Terminal : MonoBehaviour
         }
         OnTickProcess?.Invoke(currentProcess);
 
-        if(currentProcess.WorkDone > currentProcess.FinishedAt)
+        if(currentProcess.IsComplete)
         {
             OnEndProcess?.Invoke(currentProcess);
-            CompleteProgramExecution(currentProcess.Program, currentProcess.Target);
+            CompleteProgramExecution(currentProcess.ProgramPath, currentProcess.Target);
             currentProcess.node.EndProcess(currentProcess);
             currentProcess = new GameProcess() { IsIdle = true};
         }
@@ -142,16 +205,4 @@ public class Terminal : MonoBehaviour
     {
         T = this;
     }
-}
-
-[Serializable]
-public class GameProcess
-{
-    public bool IsIdle = true;
-    public string Program;
-    public Node node;
-    public GameFile Target;
-    public int FinishedAt;
-    public float WorkDone;
-    public static GameProcess NullProcess() => new GameProcess() { IsIdle = true };
 }

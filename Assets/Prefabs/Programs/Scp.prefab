@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &356847919732940641
 MonoBehaviour:
@@ -41,16 +41,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 8836771197515332872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09223417e1ce8aa4490501fa931fc867, type: 3}
+  m_Script: {fileID: 11500000, guid: a8153b6aa70c74942b5a65769f3335f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsOwned: 0
-  isFound: 0
-  fileName: scp
+  _isFound: 0
+  _fileName: scp
   permissionRequired: 0
-  text: 
-  man: "Copies file to your local machine for later use.\nUsage: scp <filename> \nThis
-    program takes time. More time for larger files."
+  _text: 
+  _man: 'Copies a file from one location to another, securly.
+
+    To copy a file
+    to your own terminal:
+
+    Usage: scp <filename>
+
+    To copy file from one node
+    to another:
+
+    Usage: scp <node:file> <node:file>'
   workToFind: 0
-  fileSize: 0
-  requiresIdle: 1
+  _fileSize: 0
+  _canBeCopied: 1
+  requiresIdle: 0
+  isSystemProgram: 0
+  aliases: []

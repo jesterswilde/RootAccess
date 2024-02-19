@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6968578542084891360
 MonoBehaviour:
@@ -41,16 +41,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 6501312483313547692}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eea1173799aa7864a8cd6bbc1ccacdff, type: 3}
+  m_Script: {fileID: 11500000, guid: 333e28aed30c4d64c98afc1c7eec99a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsOwned: 0
-  isFound: 0
-  fileName: ctrl
+  _isFound: 0
+  _fileName: ctrl
   permissionRequired: 0
-  text: 
-  man: "ctrl can be used to connect your PowerBrick to any .ctl file you see. The
-    PowerBrick can only control one object at a time. \nUsage 'ctrl <ctlFileName>'  "
+  _text: 
+  _man: "Utilizes the Powerbrick awesome control features to connect you straight
+    to any device that conforms to RFC 748 \nCommand files end in .ctrl\nUsage: ctrl
+    <command file>"
   workToFind: 0
-  fileSize: 0
+  _fileSize: 0
+  _canBeCopied: 1
   requiresIdle: 0
+  isSystemProgram: 0
+  aliases: []

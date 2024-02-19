@@ -41,8 +41,8 @@ public class PRG_Hack : GameProgram
         GameProcess process = new GameProcess()
         {
             IsIdle = false,
-            FinishedAt = (int)(term.Node.Security * speed),
-            Program = FileName,
+            WorkRequired = (int)(term.Node.Security * speed),
+            ProgramPath = FileName,
             node = term.Node,
         };
         return new CommandResult()

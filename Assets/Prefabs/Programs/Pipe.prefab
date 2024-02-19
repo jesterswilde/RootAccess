@@ -45,15 +45,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOwned: 0
-  isFound: 0
-  fileName: pipe
+  _isFound: 0
+  _fileName: pipe
   permissionRequired: 0
-  text: 
-  man: "Pipe connects an output file to an input file. Examples of output files:
-    Cameras, images, videos, music, text files. \nExamples of input files: Monitor,
-    Speaker, Electronic Billboard\nNot all outputs will connect to all inputs.\nUsage:
-    pipe <inputFile> <outputFile>"
+  _text: 
+  _man: 'Pipes data from an output source to an input source. Such as from a camera
+    to a monitor.  This will createa  a long lived process on the node. Killing the
+    process kills the connection.
+
+    Usage: pipe <outputSource> <inputSource>'
   workToFind: 0
-  fileSize: 0
-  canBeCopied: 1
+  _fileSize: 0
+  _canBeCopied: 1
   requiresIdle: 0
+  isSystemProgram: 0
+  aliases: []
