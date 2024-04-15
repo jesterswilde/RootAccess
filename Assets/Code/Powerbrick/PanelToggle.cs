@@ -22,7 +22,7 @@ public class PanelToggle : MonoBehaviour
     [SerializeField]
     FixedDisplay display;
 
-    public event Action<bool> OnValueChange;
+    public event Action<float> OnValueChange;
     public bool Value => isOn;
 
     private void OnMouseOver()
@@ -34,7 +34,7 @@ public class PanelToggle : MonoBehaviour
         if(speed > minThreshold)
         {
             isOn = !isOn;
-            OnValueChange?.Invoke(isOn);
+            OnValueChange?.Invoke(isOn ? 1f : 0f);
             if (isOn)
                 rot.forward = upPos.forward;
             else
@@ -42,7 +42,7 @@ public class PanelToggle : MonoBehaviour
         }
     }
 
-    internal bool Setup(string displayText, Action<bool> onChange)
+    internal bool Setup(string displayText, Action<float> onChange)
     {
         if (onChange != null)
             OnValueChange += onChange;
@@ -55,7 +55,7 @@ public class PanelToggle : MonoBehaviour
         isOn = false;
         rot.forward = downPos.forward;
         foreach(var d in OnValueChange.GetInvocationList())
-            OnValueChange -= (Action<bool>)d;
+            OnValueChange -= (Action<float>)d;
         display.Clear();
     }
 }

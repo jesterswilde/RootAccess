@@ -17,9 +17,9 @@ public class Tank : MonoBehaviour
     float maxTurn;
     float curSpeed;
     float curTurn;
-    bool isOn;
+    bool _isOn;
     bool isPlayerControlled = false;
-    public void Fire()
+    public void Fire(float _)
     {
         var explosion = Instantiate(explosionPrefab);
         explosion.transform.forward = explosionSpot.forward;
@@ -28,8 +28,8 @@ public class Tank : MonoBehaviour
         shell.transform.forward = shellSpot.forward;
         shell.transform.position = shellSpot.position;
     }
-    public void TurnOn(bool _isOn)=>
-        isOn = _isOn;
+    public void TurnOn(float val)=>
+        _isOn = val > 0.5f;
     public void SetSpeed(float speed) {
         curSpeed = speed * -1 * maxSpeed;
     }
@@ -48,7 +48,7 @@ public class Tank : MonoBehaviour
     }
     private void Update()
     {
-        if (!isOn)
+        if (!_isOn)
             return;
         Move();
     }

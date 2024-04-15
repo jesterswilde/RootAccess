@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
+using Unity.VisualScripting;
 using UnityEngine.UIElements;
 
 public class ExtractableTextUI : VisualElement{

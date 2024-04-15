@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#pragma warning disable 0649
+using System.Collections.Generic;
 using System;
 using UnityEngine;
 using Sirenix.OdinInspector;
@@ -27,7 +28,7 @@ public abstract class GameProgram : GameFile
                     return true;
         return base.MatchesName(name);
     }
-    public virtual string TickProcess(GameProcess process, Terminal term) => "";
-    public virtual string CompleteProcess(GameFile target, Terminal term) => "Not overriden homie";
-    public virtual void HandleUserInput(string input, GameProcess process, Terminal term){}
+    public virtual string TickProcess(GameProcess process) => "";
+    public virtual string CompleteProcess(GameProcess process) => "";
+    public virtual void HandleUserInput(string input, GameProcess process){}
 }

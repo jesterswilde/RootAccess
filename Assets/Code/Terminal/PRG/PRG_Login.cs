@@ -1,46 +1,71 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 public class PRG_Login : GameProgram
 {
-    public override CommandResult Run(List<string> arguments, Terminal term)=>
-        new CommandResult() { 
-            Text = "Please Enter Username:",
+    public override CommandResult Run(List<string> arguments, Terminal term){
+        var result = new CommandResult() { 
             Process = new LoginProcess() {
                 IsIdle = false,
                 ProgramPath = GetPath(),
-                node = term.Node,
+                Node = term.Node,
                 RequiresUserInput = true,
+                Username = arguments.Count > 0 ? arguments[0] : null,
+                Password = arguments.Count > 1 ? arguments[0] : null,
             }
         };
-    public override void HandleUserInput(string input, GameProcess process, Terminal term){
+        string text = "Please Enter Username:";
+        bool endProcess = false;
+        if(arguments.Count >= 1)
+            (endProcess, text) = HandleEnterUsername(arguments[0], result.Process as LoginProcess);
+        if(arguments.Count >= 2 && !endProcess){
+            text = HandleEnterPassword(arguments[1], result.Process as LoginProcess);
+            endProcess = true;
+        }
+        result.Text = text;
+        result.Process.RequiresUserInput = !endProcess;
+        return result;
+    }
+    public override void HandleUserInput(string input, GameProcess process){
         var loginProcess = process as LoginProcess;
         if(loginProcess == null)
-            throw new System.Exception("Invalid process type");
-        var node = term.Node ?? throw new System.Exception("You are already logged in on your home node.");
-        if (loginProcess.Username == null){
-            loginProcess.Username = input;
-            var user = node.Users.FirstOrDefault(u => u.Username == loginProcess.Username);
-            if(user != null && user.CachedPassword == user.Password){ // we already have logged in as this user before
-                node.CurrentUser = user;
-                term.TryPrint(node.LoginMessage.Replace("$username", user.Username));
-            }
-            else
-                term.TryPrint("Please Enter Password:");
-        }
+            throw new TerminalError("Invalid process type");
+        string text;
+        bool endProcess;
+        if (loginProcess.Username == null)
+            (endProcess, text) = HandleEnterUsername(input, loginProcess);
         else{
-            loginProcess.Password = input;
-            var user = node.Users.FirstOrDefault(u => u.Username == loginProcess.Username);
-            if(user == null || user.Password != loginProcess.Password){
-                term.TryPrint($"Invalid Username or Password\nFailed Login Attempts: {++node.LoginAttempts}\nPlease Enter Username:");
-                loginProcess.Username = null;
-                loginProcess.Password = null;
-            }
-            else{
-                node.CurrentUser = user;
-                term.TryPrint(node.LoginMessage.Replace("$username", user.Username));
-            }
+            text = HandleEnterPassword(input, loginProcess);
+            endProcess = true;
         }
+        Terminal.T.TryPrint(text);
+        Terminal.T.ClearInput();
+        if(endProcess)
+            process.RequiresUserInput = false;
+    }
+    (bool, string) HandleEnterUsername(string username, LoginProcess process){
+        var node = Terminal.T.Node ?? throw new System.Exception("You are already logged in on your home node.");
+        process.Username = username;
+        var user = node.Users.FirstOrDefault(u => u.Username == username);
+        if(user != null && user.CachedPassword == user.Password)
+            return (true, LoginWithUser(user));
+        node.LoginAttempts++;
+        return (false, "Please Enter Password:");
+    }
+    string HandleEnterPassword(string password, LoginProcess process){
+        var node = Terminal.T.Node ?? throw new System.Exception("You are already logged in on your home node.");
+        var user = node.Users.FirstOrDefault(u => u.Username == process.Username);
+        if(user == null || user.Password != password){
+            node.LoginAttempts++;
+            return $"Invalid Username or Password\nFailed login attempts: {Terminal.T.Node.LoginAttempts}";
+        }
+        return LoginWithUser(user);
+    }
+    string LoginWithUser(User user){
+        Terminal.T.Node.CurrentUser = user;
+        user.CachedPassword = user.Password;
+        return Terminal.T.Node.LoginMessage.Replace("$username",$"{user.Role.Color()}{user.Username}{TColor.Close}");
     }
 
 

@@ -1,28 +1,30 @@
 ﻿#pragma warning disable 0649
+using System.Text;
 using UnityEngine;
-
-public class LoadingBar : MonoBehaviour
+using UnityEngine.UIElements;
+public class LoadingBar : Label
 {
-    [SerializeField]
-    TMPro.TextMeshProUGUI loading;
-    [SerializeField]
-    int dots = 100;
-    public void UpdateBar(GameProcess process)
-    {
-        var percent = process.Progress;
-        var numBars = percent * dots;
-        var result = "[";
-        for(int i = 0; i < dots; i++)
-        {
-            if (i < numBars)
-                result += "|";
+    int numBlocks = 10;
+    public LoadingBar(){
+        AddToClassList("loading-bar");
+        RegisterCallback<GeometryChangedEvent>(Setup);
+    }
+    void Setup(GeometryChangedEvent e){
+        UnregisterCallback<GeometryChangedEvent>(Setup);
+        var charWidth = MeasureTextSize("█", 0, MeasureMode.Undefined, 100, MeasureMode.Undefined);
+        numBlocks = (int)(contentRect.width / charWidth.x);
+        Debug.Log(numBlocks);
+        UpdateProgress(0);
+    }
+    public void UpdateProgress(float progress){
+        StringBuilder s = new ();
+        var progressThreshold = 100f / numBlocks;
+        for(var i = 0; i < numBlocks; i++){
+            if(progress * 100 > i * progressThreshold)
+                s.Append("█");
             else
-                result += ".";
-
+                s.Append("░");
         }
-        result += "]";
-        result += $" {(int)(percent * 100)}%";
-        loading.text = result;
-
+        text = s.ToString();
     }
 }

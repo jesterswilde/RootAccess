@@ -20,7 +20,6 @@ public class WorldServer : MonoBehaviour, IInteractable
         Terminal.AddServer(this);
         if(dongleRend != null)
             dongleRend.enabled = true;
-        inter.Deactivate();
     }
     private void Awake()
     {

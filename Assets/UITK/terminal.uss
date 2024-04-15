@@ -1,0 +1,20 @@
+.error {
+    color: rgb(190, 20, 13);
+}
+
+.command {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.body-text {
+    font-size: 18px;
+    color: rgb(13, 190, 28);
+    -unity-font: url('project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=8b11eddbaaa02c244828dfadd613f4db&type=3#NotInter-Regular');
+}

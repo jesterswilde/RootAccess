@@ -1,7 +1,7 @@
 #pragma warning disable 0649
 using UnityEngine;
 
-public class PipeFile : GameFile{
+public class PipeFile : GameDaemon{
     [SerializeField]
     PipeInput _input;
     public PipeInput Input {get => _input; set{
@@ -17,10 +17,11 @@ public class PipeFile : GameFile{
         Connect();
     }}
 
-    public void Setup(PipeInput input, PipeOutput output){
+    public void Setup(PipeInput input, PipeOutput output, Node node){
         _input = input;
         _output = output;
         Connect();
+        _input.OnOutputChanged += WatchInput;
     }
     public void Connect(){
         if (Input != null && Output != null){
@@ -28,8 +29,18 @@ public class PipeFile : GameFile{
         }
     }
     public void Disconnect(){
+        Panic();
+    }
+    override public void RM(){
+        Input.OnOutputChanged -= WatchInput;
         if (Input != null && Output != null){
             Output.Disconnect(Input);
+        }
+        base.RM();
+    }
+    public void WatchInput(PipeInput input, PipeOutput output){
+        if(input == _input && output != _output){
+            Panic();
         }
     }
     protected override void Start(){

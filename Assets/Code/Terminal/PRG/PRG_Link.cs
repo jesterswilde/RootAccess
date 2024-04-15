@@ -20,9 +20,9 @@ public class PRG_Link : GameProgram
     {
         var target = GraphManager.GetConnections(term.Node).Find(c => c.GetOther(term.Node).Name == nodeName);
         if (target == null)
-            return new CommandResult() { Text = $"{TColor.Error} No known connection to node {nodeName}{TColor.Close}" };
+            throw new TerminalError($"No known connection to node {nodeName}");
         if(!target.HighestPermission.HasPermission(target.RequiredPerm))
-            return new CommandResult() { Text = $"{TColor.Error} You do not have sufficient privelages. Elevate your role{TColor.Close}" };
+            throw new TerminalError($"You do not have the required permission to access {nodeName}, Elevaate your role");
         term.Node = target.GetOther(term.Node);
         return new CommandResult() { Text = $"Linked into node {term.Node.Name}" };
     }

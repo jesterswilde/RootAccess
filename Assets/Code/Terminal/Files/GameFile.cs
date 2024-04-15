@@ -22,8 +22,6 @@ public abstract class GameFile : MonoBehaviour
     [SerializeField, TextArea]
     string _man;
     [SerializeField]
-    public string Man => _man;
-    [SerializeField]
     int workToFind;
     public int WorkToFind => workToFind;
     [SerializeField]
@@ -32,11 +30,18 @@ public abstract class GameFile : MonoBehaviour
     [SerializeField]
     protected bool _canBeCopied = true;
     public bool CanBeCopied => _canBeCopied;
+    public Node GetNode() => GetComponentInParent<Node>();
     public string GetPath(){
-        var parentNode = GetComponentInParent<Node>();
+        var parentNode = GetNode();
         if(parentNode == null)
             return $"{FileName}";
         return $"{parentNode.Name}:{FileName}";
+    }
+    public virtual void RM(){
+        Destroy(gameObject);
+    }
+    public virtual string GetMan(){
+        return _man;
     }
     protected virtual void Start()
     {

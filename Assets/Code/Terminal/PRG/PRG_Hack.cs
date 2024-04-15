@@ -11,26 +11,26 @@ public class PRG_Hack : GameProgram
     float speed = 1;
 
 
-    public override string CompleteProcess(GameFile target, Terminal term)
+    public override string CompleteProcess(GameProcess process)
     {
-        var curPermission = term.Node.Role;
+        var curPermission = process.Node.Role;
         string result = $"{TColor.Error}Failure{TColor.Close} | This node was not vulnerable to Hack ${FileName} failed to raise permissions.";
         if(curPermission == Permission.Guest)
         {
-            var success = hackType.Any(hack => term.Node.AdminVulnerabilities.Any(vuln => vuln == hack));
+            var success = hackType.Any(hack => process.Node.AdminVulnerabilities.Any(vuln => vuln == hack));
             if (success)
             {
-                term.Node.ElevateRole(Permission.Admin);
+                process.Node.ElevateRole(Permission.Admin);
                 result = $"{TColor.Access}Success{TColor.Close} | Hack: {FileName} successfully raised your role to {TColor.Admin}Admin{TColor.Close}";
-                curPermission = term.Node.Role;
+                curPermission = process.Node.Role;
             }
         }
         if(curPermission == Permission.Admin)
         {
-            var success = hackType.Any(hack => term.Node.RootVulnerabilities.Any(vuln => vuln == hack));
+            var success = hackType.Any(hack => process.Node.RootVulnerabilities.Any(vuln => vuln == hack));
             if (success)
             {
-                term.Node.ElevateRole(Permission.Root);
+                process.Node.ElevateRole(Permission.Root);
                 result = $"{TColor.Access}Success{TColor.Close} | Hack: ${FileName} successfully raised your role to {TColor.Root}Root{TColor.Close}";
             }
         }
@@ -43,7 +43,7 @@ public class PRG_Hack : GameProgram
             IsIdle = false,
             WorkRequired = (int)(term.Node.Security * speed),
             ProgramPath = FileName,
-            node = term.Node,
+            Node = term.FS,
         };
         return new CommandResult()
         {

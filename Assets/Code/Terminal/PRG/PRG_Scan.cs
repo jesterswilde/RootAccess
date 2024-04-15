@@ -14,22 +14,22 @@ public class PRG_Scan : GameProgram
             Text = $"Starting scan from node: {term.Node.Name}",
             Process = new GameProcess() {
                 WorkRequired = (int)maxWork,
-                node = term.Node,
+                Node = term.FS,
                 IsIdle = false,
                 ProgramPath = GetPath(),
             }
         };
     }
-    public override string TickProcess(GameProcess process, Terminal term)
+    public override string TickProcess(GameProcess process)
     {
-        var newConnections = GraphManager.GetConnections(process.node)
+        var newConnections = GraphManager.GetConnections(process.Node)
             .Where(c => !c.IsFound && c.WorkToFind < process.WorkDone).ToList();
         if (newConnections.Count == 0)
             return "";
         newConnections.ForEach(c => c.FoundConnection());
-        return newConnections.Aggregate("", (a, f) => $"{a}\nDiscovered connection to node: {f.GetOther(process.node).Name}");
+        return newConnections.Aggregate("", (a, f) => $"{a}\nDiscovered connection to node: {f.GetOther(process.Node).Name}");
     }
-    public override string CompleteProcess(GameFile target, Terminal term)
+    public override string CompleteProcess(GameProcess process)
     {
         return "Search Complete.";
     }

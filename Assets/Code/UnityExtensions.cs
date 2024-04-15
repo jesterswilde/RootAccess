@@ -196,4 +196,7 @@ public static class UnityExtensions
         second = list.Count > 1 ? list[1] : default(T); // or throw
         rest = list.Skip(2).ToList();
     }
+    public static bool ToBool(this float val){
+        return val > 0.5f;
+    }
 }

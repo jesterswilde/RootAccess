@@ -24,7 +24,7 @@ public class PanelButton : MonoBehaviour
     States state = States.Available;
     float timer = 0;
 
-    public event Action OnPress;
+    public event Action<float> OnPress;
 
     private void OnMouseOver()
     {
@@ -34,14 +34,14 @@ public class PanelButton : MonoBehaviour
         }
         if (!isInUse && Input.GetMouseButtonDown(0))
         {
-            OnPress?.Invoke();
+            OnPress?.Invoke(1f);
             state = States.MovingDown;
             isPressed = true;
             timer = 0;
         }
     }
 
-    internal void Setup(string displayText, Action _onPress)
+    internal void Setup(string displayText, Action<float> _onPress)
     {
         if (_onPress != null)
             OnPress += _onPress;
@@ -59,7 +59,7 @@ public class PanelButton : MonoBehaviour
     internal void Reset()
     {
         foreach(var d in OnPress.GetInvocationList())
-            OnPress -= (Action)d;
+            OnPress -= (Action<float>)d;
         display.Clear();
     }
 

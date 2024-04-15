@@ -4,10 +4,10 @@ public class PRG_Pause : GameProgram
 {
     public override CommandResult Run(List<string> arguments, Terminal term)
     {
-        if (term.CurrentProcess.IsIdle)
-            return new CommandResult() { Text = $"{TColor.Error}No process currently running to pause.{TColor.Close}" };
-        var oldProcess = term.CurrentProcess;
-        term.CurrentProcess = GameProcess.NullProcess();
+        if (term.FS.CurrentProcess.IsIdle)
+            throw new TerminalError("No process currently running to pause.");
+        var oldProcess = term.FS.CurrentProcess;
+        term.FS.CurrentProcess = GameProcess.NullProcess();
             return new CommandResult() { Text = $"Ended process running {oldProcess.ProgramPath}" };
     }
 }

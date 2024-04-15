@@ -1,3 +1,4 @@
-public class OutputFile: GameFile{
-    public PipeOutput Output {get; protected set;}
+using UnityEngine;
+public abstract class OutputFile: GameFile{
+    public PipeOutput Output {get ; set;}
 }

@@ -1,6 +1,4 @@
-﻿using UnityEngine;
+#pragma warning disable 0649
+using UnityEngine;
 
-public class Cyberdeck : MonoBehaviour
-{
-
-}
+public class Cyberdeck: MonoBehaviour{}

@@ -10,10 +10,10 @@ public class WorldProgram : MonoBehaviour, IInteractable
     public void GotInteracted()
     {
         if (Terminal.T != null)
-            Terminal.T.AddFile(filePrefab);
+            Terminal.T.FS.AddFile(Instantiate(filePrefab));
         else
             Debug.Log($"tried to add {filePrefab.FileName}");
-        inter.Deactivate();
+        //inter.Deactivate();
         Destroy(gameObject);
     }
     private void Awake()

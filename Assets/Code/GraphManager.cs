@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class GraphManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GraphManager : MonoBehaviour
 
     [SerializeField]
     Node startingNode;
+    public static Node StartingNode => T.startingNode;
     [SerializeField]
     LineRenderer linePrefab;
     public static LineRenderer LinePrefab => T.linePrefab;
@@ -39,7 +41,10 @@ public class GraphManager : MonoBehaviour
             return T.graph[node];
         return new List<Connection>();
     }
-
+    public static void AddNode(Node node)
+    {
+        T.nodes[node.Name] = node;
+    }
     internal static Node GetNode(string nodePath)
     {
         if (T.nodes.ContainsKey(nodePath))
@@ -50,8 +55,5 @@ public class GraphManager : MonoBehaviour
     private void Awake()
     {
         T = this;
-        foreach(var node in graph.Keys){
-            nodes[node.Name] = node;
-        }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ControlPanel : MonoBehaviour
 {
@@ -26,12 +27,12 @@ public class ControlPanel : MonoBehaviour
         isBusy = true;
         return levers[index].Setup(displayText, _onChange);
     }
-    public bool LinkToToggle(int index, string displayText, Action<bool> _onChange)
+    public bool LinkToToggle(int index, string displayText, Action<float> _onChange)
     {
         isBusy = true;
         return toggles[index].Setup(displayText, _onChange);
     }
-    public void LinkToButton(int index, string displayText, Action _onPress)
+    public void LinkToButton(int index, string displayText, Action<float> _onPress)
     {
         isBusy = true;
         buttons[index].Setup(displayText, _onPress);

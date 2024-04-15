@@ -1,16 +1,13 @@
 #pragma warning disable 0649
 using System;
-using System.Security;
-using Unity.VisualScripting;
-using UnityEngine;
 
 [Serializable]
 public class GameProcess
 {
     public bool IsIdle = true;
+    public bool isBlocking = false;
     public string ProgramPath;
-    public Node node;
-    public GameFile Target;
+    public Node Node;
     public float WorkRequired;
     public float WorkDone;
     public float DaysRequired;
@@ -18,6 +15,6 @@ public class GameProcess
     public bool IsComplete => DaysPassed >= DaysRequired && WorkDone >= WorkRequired;
     public float Progress => DaysRequired > 0 ? DaysPassed / DaysRequired : WorkDone / WorkRequired;
     public bool RequiresUserInput = false;
-    public bool HasLoadingBar = true;
+    public bool HasLoadingBar = false;
     public static GameProcess NullProcess() => new GameProcess() { IsIdle = true };
 }

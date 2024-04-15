@@ -1,5 +1,6 @@
 #pragma warning disable 0649
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PipeCameraOutput : PipeOutput{ 
@@ -18,8 +19,14 @@ public class PipeCameraOutput : PipeOutput{
     public override void Disconnect(PipeInput input)
     {
         base.Disconnect(input);
+        if(_connections.Count == 0){
+            _cam.enabled = false;
+        }
     }
     public PipeCameraOutput(Camera cam){
         _cam = cam;
+    }
+    void Awake(){
+        _cam.enabled = false;
     }
 }

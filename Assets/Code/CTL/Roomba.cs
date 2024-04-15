@@ -14,13 +14,13 @@ public class Roomba : MonoBehaviour
     float turnSpeed;
     float curSpeed;
     float curTurn;
-    bool isOn;
+    bool _isOn;
     Color offColor;
     [SerializeField]
     Color onColor;
     [SerializeField]
     Color vcmColor;
-    bool isVaccuming;
+    bool _isVaccuming;
     [SerializeField]
     Detector detector;
     [SerializeField]
@@ -34,29 +34,29 @@ public class Roomba : MonoBehaviour
     {
         curTurn = turnSpeed * turn;
     }
-    public void SetOn(bool _isOn)
+    public void SetOn(float val)
     {
-        isOn = _isOn;
-        onLight.material.color = isOn ? onColor : offColor;
-        if (isOn && isVaccuming)
+        _isOn = val.ToBool();
+        onLight.material.color = _isOn ? onColor : offColor;
+        if (_isOn && _isVaccuming)
             audioSource.Play();
         else
             audioSource.Stop();
     }
-    public void SetVaccum(bool isVcm)
+    public void SetVaccum(float val)
     {
-        isVaccuming = isVcm;
+        _isVaccuming = val.ToBool();
 
-        if (isOn && isVaccuming)
+        if (_isOn && _isVaccuming)
             audioSource.Play();
         else
             audioSource.Stop();
-        vcmLight.material.color = isOn ? vcmColor : offColor;
+        vcmLight.material.color = _isOn ? vcmColor : offColor;
     }
 
     private void Update()
     {
-        if (!isOn || !detector.IsBlocked)
+        if (!_isOn || !detector.IsBlocked)
             return;
         transform.Rotate(Vector3.up, curTurn * Time.deltaTime);
         rigid.velocity = transform.forward * curSpeed;
