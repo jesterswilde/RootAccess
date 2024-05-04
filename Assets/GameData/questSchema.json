@@ -1,0 +1,54 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": ["Name", "Objectives", "HeaderText"],
+    "properties": {
+        "HeaderText": { "type": "string" },
+        "Name": { "type": "string" },
+        "TempVariables": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "Objectives":{
+            "type": "array",
+            "items":{
+                "type": "object",
+                "required": ["Name", "GameText", "CompleteAction", "EndRequirements"],
+                "properties": {
+                    "Name": { "type": "string" },
+                    "GameText": { "type": "string" },
+                    "CompleteAction": {
+                        "type": "string",
+                        "enum": ["None", "Emit", "Write"]
+                    },
+                    "EndRequirements": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "Requirement": {
+                                    "type": "object",
+                                    "$ref": "./requirementSchema.json"
+                                }
+                            }
+                        }
+                    },
+                    "StartRequirements": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "Requirement": {
+                                    "type": "object",
+                                    "$ref": "./requirementSchema.json"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

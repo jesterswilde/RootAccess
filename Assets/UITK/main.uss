@@ -30,3 +30,15 @@
     background-color: rgb(233, 233, 115);
     font-size: 51px;
 }
+
+.sidebar-group {
+    background-color: rgb(72, 61, 49);
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.sidebar-container {
+    color: rgb(221, 201, 201);
+}

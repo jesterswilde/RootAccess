@@ -1,0 +1,81 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type":"object",
+    "properties":{
+        "condition":{
+            "type": "string",
+            "enum": ["PriorPost", "Date", "Flag", "Rep"]
+        }
+    },
+    "allOf": [
+        {
+            "if":{
+                "properties": {
+                    "condition": {"const": "PriorPost"}
+                },
+                "required": ["condition"]
+            },
+            "then":{
+                "properties":{
+                    "post_id":{"type":"string"},
+                    "does_not_have": {"type": "boolean"}
+                },
+                "required": ["post_id"]
+            }
+        },
+        {
+            "if":{
+                "properties": {
+                    "condition": {"const": "Date"}
+                },
+                "required": ["condition"]
+            },
+            "then":{
+                "properties":{
+                    "date":{"type":"integer"}
+                },
+                "required": ["date"]
+            }
+        },
+        {
+            "if":{
+                "properties": {
+                    "condition": {"const": "Flag"}
+                },
+                "required": ["condition"]
+            },
+            "then":{
+                "properties":{
+                    "flag":{"type":"string"},
+                    "op":{
+                        "type": "string",
+                        "enum": ["EqualTo", "NotEqualTo", "GreaterThan", "LessThan", "GreaterThanEqualTo", "LessThanEqualTo"]
+                    },
+                    "value":{"type":"integer"}
+                },
+                "required": ["flag", "op", "value"]
+            }
+        },
+        {
+            "if":{
+                "properties": {
+                    "condition": {"const": "Rep"}
+                },
+                "required": ["condition"]
+            },
+            "then":{
+                "properties":{
+                    "user":{
+                        "$ref": "./usernameSchema.json"
+                    },
+                    "op":{
+                        "type": "string",
+                        "enum": ["==", "!=", ">", "<", ">=", "<="]
+                    },
+                    "rep":{"type":"integer"}
+                },
+                "required": ["user", "op", "rep"]
+            }
+        }
+    ]
+}

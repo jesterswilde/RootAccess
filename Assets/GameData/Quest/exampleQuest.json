@@ -1,0 +1,19 @@
+{
+    "Name": "Hax0r",
+    "HeaderText": "Hax the planet",
+    "Objectives": [
+        {
+            "CompleteAction": "None",
+            "GameText": "Go To Mainframe",
+            "Name": "Mainframe",
+            "EndRequirements": [{
+                "Requirement":{ 
+                    "condition": "Flag",
+                    "flag": "Mainframe",
+                    "op": "GreaterThan",
+                    "value": 0
+                }
+            }]
+        }
+    ]
+}

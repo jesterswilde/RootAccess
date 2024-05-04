@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public static void SetFlag(string flag, float value)
     {
         T._flags[flag] = value;
+        EventStream.Emit(flag, value);
     }
     public static float GetFlag(string flag)
     {
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
             T._flags[flag] += value;
         else
             T._flags[flag] = value;
+        EventStream.Emit(flag, T._flags[flag]);
     }
 
 

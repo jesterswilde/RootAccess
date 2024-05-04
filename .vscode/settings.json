@@ -1,6 +1,10 @@
 {
     "json.schemas": [
         {
+            "fileMatch": ["/Assets/GameData/Quest/*.json"],
+            "url": "./Assets/GameData/questSchema.json"
+        },
+        {
             "fileMatch": [
                 "/Assets/GameData/Forum/Threads/*.json",
             ],

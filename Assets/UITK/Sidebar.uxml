@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UITK/main.uss?fileID=7433441132597879392&amp;guid=d620f44f4a4641548a4515335b39deb4&amp;type=3#main" />
+    <ui:VisualElement name="Sidebar" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 15%; align-self: flex-end; max-width: 500px; min-width: 300px;">
+        <ui:VisualElement name="BadgeHolder" class="sidebar-group">
+            <ui:Label tabindex="-1" text="Badge" display-tooltip-when-elided="true" name="Header" style="font-size: 32px; color: rgb(245, 239, 239); -unity-text-align: middle-center; background-color: rgba(135, 128, 119, 0.33);" />
+            <ui:VisualElement name="BadgeContainer" class="sidebar-container" style="background-color: rgba(0, 0, 0, 0); margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; font-size: 19px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="QuestSection" class="sidebar-group">
+            <ui:Label tabindex="-1" text="Quests" display-tooltip-when-elided="true" name="Header" style="font-size: 32px; color: rgb(245, 239, 239); -unity-text-align: middle-center; background-color: rgba(135, 128, 119, 0.33);" />
+            <ui:VisualElement name="QuestContainer" class="sidebar-container" style="background-color: rgba(0, 0, 0, 0);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
