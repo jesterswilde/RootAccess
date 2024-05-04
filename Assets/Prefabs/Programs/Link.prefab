@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &175240089523992122
 MonoBehaviour:
@@ -41,17 +41,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 175240089523992120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd8df294765fefe4588044696309b4d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 47cbdcbf47cc08e4a802249e14f9aa57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsOwned: 0
-  isFound: 0
-  fileName: link
+  _isFound: 0
+  _fileName: link
   permissionRequired: 0
-  text: 
-  man: "Link is about connections to other nodes.\nwith no arguments it shows you
-    all known connections.\nUsage: link\nwith a node name, if you have sufficient
-    privelages, iYou will link into that node. \nUsage: link <nodeName>"
+  _text: 
+  _man: 'VIews nodes connected to your current node and can connect to a node that
+    you know about and have access to.
+
+    To view nodes connected to this one:
+
+    Usage:
+    link
+
+    To connect to a different node
+
+    Usage: Link <nodename>'
   workToFind: 0
-  fileSize: 0
+  _fileSize: 0
+  _canBeCopied: 1
   requiresIdle: 0
+  isSystemProgram: 0
+  aliases: []

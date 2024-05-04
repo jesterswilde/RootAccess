@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4117493908888573480
 MonoBehaviour:
@@ -41,16 +41,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 4117493908888573486}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f9e1c1d0b0d65c408081b83f646242f, type: 3}
+  m_Script: {fileID: 11500000, guid: b3af899c4ac3b1f49abedf7318f61b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsOwned: 0
-  isFound: 0
-  fileName: tut
+  _isFound: 0
+  _fileName: tutorial
   permissionRequired: 0
-  text: 
-  man: 'This is a tutoria to help explain the terminal and nodes. You can Run ''tut''
-    by itself for an overview. '
+  _text: 
+  _man: It's the tutorial!
   workToFind: 0
-  fileSize: 0
+  _fileSize: 0
+  _canBeCopied: 1
   requiresIdle: 0
+  isSystemProgram: 0
+  aliases:
+  - tut

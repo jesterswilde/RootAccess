@@ -1,4 +1,23 @@
-﻿{
+{
+    "json.schemas": [
+        {
+            "fileMatch": ["/Assets/GameData/Quest/*.json"],
+            "url": "./Assets/GameData/questSchema.json"
+        },
+        {
+            "fileMatch": [
+                "/Assets/GameData/Forum/Threads/*.json",
+            ],
+            "url": "./Assets/GameData/Forum/forumSchema.json"
+        },
+        {
+            "fileMatch": [
+                "/Assets/GameData/Dossier/*.json",
+            ],
+            "url": "./Assets/GameData/Dossier/dossierSchema.json"
+        }],
+        "workbench.colorTheme": "Default Dark Modern",
+        "vim.smartRelativeLine": true,
     "files.exclude":
     {
         "**/.DS_Store":true,
@@ -51,5 +70,6 @@
         "ProjectSettings/":true,
         "temp/":true,
         "Temp/":true
-    }
+    },
+    "dotnet.preferCSharpExtension": true
 }

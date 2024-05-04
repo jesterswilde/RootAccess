@@ -41,17 +41,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 6600720801837891019}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ecefea163f2f664ca161816b2b7256c, type: 3}
+  m_Script: {fileID: 11500000, guid: 9174cf28e94a128439a85b912969fb1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsOwned: 0
-  isFound: 0
-  fileName: mite
+  _isFound: 0
+  _fileName: hack
   permissionRequired: 0
-  text: 
-  man: 'Hack Type: (here)'
+  _text: 
+  _man: Leet haxx0rz
   workToFind: 0
-  fileSize: 0
-  requiresIdle: 1
-  hackType: 04000000
+  _fileSize: 0
+  _canBeCopied: 1
+  requiresIdle: 0
+  isSystemProgram: 0
+  aliases: []
+  hackType: 
   speed: 1

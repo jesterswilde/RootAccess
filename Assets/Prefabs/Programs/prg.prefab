@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5979308960864280123
 MonoBehaviour:
@@ -41,16 +41,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 6725112614587924378}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b37935091b134746abd62cd79c7d91f, type: 3}
+  m_Script: {fileID: 11500000, guid: f1868303be0a63c4299c362f875316ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsOwned: 0
-  isFound: 0
-  fileName: prg
+  _isFound: 0
+  _fileName: prg
   permissionRequired: 0
-  text: 
-  man: "prg will list all the programs you currently have installed on your terminal.
-    \nUsage: 'prg'"
+  _text: 
+  _man: 
   workToFind: 0
-  fileSize: 0
+  _fileSize: 0
+  _canBeCopied: 1
   requiresIdle: 0
+  isSystemProgram: 0
+  aliases: []

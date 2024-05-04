@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3001107717873263198
 MonoBehaviour:
@@ -41,14 +41,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 3228315480436932516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0db48bd002c41004fa4e1a98e308cc71, type: 3}
+  m_Script: {fileID: 11500000, guid: 8cd9e7356c17e5b4fa8f3dc12090664b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsOwned: 0
-  fileName: man
+  _isFound: 0
+  _fileName: man
   permissionRequired: 0
-  text: Meow! Stop that.
-  man: 'man (help): this program is used on other programs to describe their functionality.
-    \n Usage: man <filename> \n consider using inv to check local files or ls to
-    check files on the node you are currently on.'
-  fileSize: 0
+  _text: 
+  _man: "Prints out the man(ual) of a given program. \nUsage: man <programName>"
+  workToFind: 0
+  _fileSize: 0
+  _canBeCopied: 1
+  requiresIdle: 0
+  isSystemProgram: 0
+  aliases: []

@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8135823283880558200
 MonoBehaviour:
@@ -41,15 +41,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 2331388951708013116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1319f786bd26d04297c026be666863f, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c548744976784f40a9329e2dd016bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsOwned: 0
-  isFound: 0
-  fileName: scan
+  _isFound: 0
+  _fileName: scan
   permissionRequired: 0
-  text: 
-  man: 'Scan searches for nodes connected to your current node. '
+  _text: 
+  _man: 'Scans current node for all nodes connectd to this node. Note, some connections
+    are only availble to users with elevated permissions.
+
+    Usage: scan'
   workToFind: 0
-  fileSize: 0
-  requiresIdle: 1
+  _fileSize: 0
+  _canBeCopied: 1
+  requiresIdle: 0
+  isSystemProgram: 0
+  aliases: []

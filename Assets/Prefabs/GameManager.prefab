@@ -11,6 +11,11 @@ GameObject:
   - component: {fileID: 64443179136965562}
   - component: {fileID: 64443179136965565}
   - component: {fileID: 1195482284}
+  - component: {fileID: 77545635654254799}
+  - component: {fileID: 6942164771991971885}
+  - component: {fileID: 1456122633162698161}
+  - component: {fileID: 73291342097070453}
+  - component: {fileID: 1987895812969158990}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -31,7 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &64443179136965565
 MonoBehaviour:
@@ -45,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fce26fb8941de324e96b2c5ea64a018d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _outlineMaterial: {fileID: 2100000, guid: e4f17fbc9cd7d5c44ab013d485a6b606, type: 2}
   playerSettings: {fileID: 11400000, guid: f00db2362d10087488b4bbbbe671c157, type: 2}
   canvas: {fileID: 0}
 --- !u!114 &1195482284
@@ -59,5 +65,110 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea79d864a2630b1498ea0ef41044e23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  termGUIPrefab: {fileID: 0}
-  termGUI: {fileID: 0}
+  currentMode: 0
+--- !u!114 &77545635654254799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64443179136965564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 545c52c36ec8eaa488f6480206c88198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSize: 256
+  panels:
+  - {fileID: 11400000, guid: 96f562ac2fedcbd4b900fe67c79287cf, type: 2}
+  - {fileID: 11400000, guid: d21d6c6939b6d4241bcf95c9f1de3b1e, type: 2}
+  - {fileID: 11400000, guid: 4f1a393f85e72a64cb1a2032480892fb, type: 2}
+  - {fileID: 11400000, guid: 3112facdb3c231e4496dabb29f5f9c38, type: 2}
+  - {fileID: 11400000, guid: 9069a6132dc87074899fd5a4ef204779, type: 2}
+--- !u!114 &6942164771991971885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64443179136965564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc1686bdea246a4dad9fb7d966e029c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _doc: {fileID: 1456122633162698161}
+  _sidebarPrefab: {fileID: 9197481963319205126, guid: 82f7550046e8e344facac8712c961208,
+    type: 3}
+--- !u!114 &1456122633162698161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64443179136965564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 4e1ee8cb7096d6941815cc276d2a113f, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 0}
+  m_SortingOrder: 0
+--- !u!114 &73291342097070453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64443179136965564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bd5a657f2d06940bc44277381abbb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _quests
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[Quest,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  _individualQuests:
+  - Assets/GameData/Quest/exampleQuest.json
+  _questObjectFiles: []
+--- !u!114 &1987895812969158990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64443179136965564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e8d483aa39e3724f86b2a8682e783f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,12 +1,17 @@
-﻿using UnityEngine;
+﻿#pragma warning disable 0649
+using UnityEngine;
 using Sirenix.Utilities;
+using Unity.VisualScripting;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IMovable
 {
-    static Player T;
+    public static Player T { get; private set; }
     PlayerSettings settings => GameManager.PlayerSettings;
     public static Vector3 Position => T.transform.position;
     CharacterController ch;
+    Targeter _target;
+    Outfit _outfit;
+    public Outfit Outfit => _outfit;
     float yMotion = 0;
     [SerializeField]
     Detector groundDetector;
@@ -18,6 +23,8 @@ public class Player : MonoBehaviour
     Transform throwPos;
     [SerializeField]
     Transform camPos;
+    [SerializeField]
+    LayerMask _targetMask;
     public static Vector3 CamPos => T.camPos.position;
     [SerializeField]
     float throwForce = 10f;
@@ -34,8 +41,12 @@ public class Player : MonoBehaviour
     float crouchLerp = 0;
     [SerializeField]
     float crouchLerpSpeed = 0.5f;
+    Vector3 platfromMovement = Vector3.zero;
 
-    void Move()
+    public void Move(Vector3 vec){
+        platfromMovement = vec;
+    }
+    void MoveViaControls()
     {
         var x = Input.GetAxisRaw("Horizontal");
         var z = Input.GetAxisRaw("Vertical");
@@ -49,7 +60,8 @@ public class Player : MonoBehaviour
         forward.y = 0;
         forward.Normalize();
         float speed = Input.GetKey(KeyCode.LeftShift) ? settings.SprintSpeed : settings.MoveSpeed;
-        ch.Move((right * norm.x + forward * norm.z) * Time.deltaTime * speed + yMotion * Vector3.up * Time.deltaTime);
+        ch.Move((right * norm.x + forward * norm.z) * Time.deltaTime * speed + yMotion * Vector3.up * Time.deltaTime + platfromMovement);
+        platfromMovement = Vector3.zero;
     }
     void Jump()
     {
@@ -167,8 +179,8 @@ public class Player : MonoBehaviour
     {
         if (ControlManager.Mode != ControlMode.World)
             return;
-        if (Input.GetKeyDown(KeyCode.F))
-            TryPickup();
+        if(Input.GetKeyDown(KeyCode.F))
+            _target.Target?.Interact();
         if (Input.GetKeyDown(KeyCode.Alpha1))
             ThrowBrick();
         if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -176,8 +188,9 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftControl))
             isCrouching = !isCrouching;
         Jump();
-        Move();
+        MoveViaControls();
         Crouching();
+        _target.Update();
         //Ugly as sin. Also where the powerbrick in the air bug lives. 
         BrickPhysTimer();
     }
@@ -186,5 +199,7 @@ public class Player : MonoBehaviour
     {
         T = this;
         ch = GetComponentInChildren<CharacterController>();
+        _target = new(CameraController.Cam.transform, _targetMask);
+        _outfit = GetComponentInChildren<Outfit>();
     }
 }

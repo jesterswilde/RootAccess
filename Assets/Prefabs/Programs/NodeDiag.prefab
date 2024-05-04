@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &226527712217327493
 MonoBehaviour:
@@ -41,16 +41,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 226527712217327495}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a776169bcbea3b0408f611d654e85321, type: 3}
+  m_Script: {fileID: 11500000, guid: aa0dba0646638a94cb0cb828100e8320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsOwned: 0
-  isFound: 0
-  fileName: node
+  _isFound: 0
+  _fileName: node
   permissionRequired: 0
-  text: 
-  man: "Node tells you info about your current node. Such as your current permissions,
-    the hardware and software running on it. \nUsage: node"
+  _text: 
+  _man: "Prints out informationa about a given node.\nTo print out current node\nUsage:
+    node   \nTo Print out a specific node:\nUsage: node <nodename>"
   workToFind: 0
-  fileSize: 0
+  _fileSize: 0
+  _canBeCopied: 1
   requiresIdle: 0
+  isSystemProgram: 0
+  aliases: []

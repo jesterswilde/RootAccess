@@ -1,9 +1,11 @@
+#pragma warning disable 0649
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using UnityEngine.Events;
+using UnityEngine.Animations;
 
 //Uses Contains from UnityExtension layer mask extension method
 

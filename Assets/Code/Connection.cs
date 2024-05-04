@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using UnityEditor;
+﻿#pragma warning disable 0649
 using UnityEngine;
 
 public class Connection : MonoBehaviour

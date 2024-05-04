@@ -1,13 +1,18 @@
-﻿using System.Collections.Generic;
+﻿#pragma warning disable 0649
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class GraphManager : MonoBehaviour
 {
     static GraphManager T;
     Dictionary<Node, List<Connection>> graph = new Dictionary<Node, List<Connection>>();
+    Dictionary<string, Node> nodes = new Dictionary<string, Node>();
 
     [SerializeField]
     Node startingNode;
+    public static Node StartingNode => T.startingNode;
     [SerializeField]
     LineRenderer linePrefab;
     public static LineRenderer LinePrefab => T.linePrefab;
@@ -35,6 +40,16 @@ public class GraphManager : MonoBehaviour
         if (T.graph.ContainsKey(node))
             return T.graph[node];
         return new List<Connection>();
+    }
+    public static void AddNode(Node node)
+    {
+        T.nodes[node.Name] = node;
+    }
+    internal static Node GetNode(string nodePath)
+    {
+        if (T.nodes.ContainsKey(nodePath))
+            return T.nodes[nodePath];
+        return null;
     }
 
     private void Awake()
