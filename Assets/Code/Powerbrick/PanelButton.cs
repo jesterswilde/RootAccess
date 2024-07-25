@@ -1,6 +1,7 @@
 ﻿#pragma warning disable 0649
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PanelButton : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class PanelButton : MonoBehaviour
     float timer = 0;
 
     public event Action<float> OnPress;
+    [SerializeField]
+    UnityEvent unityOnPress;
 
     private void OnMouseOver()
     {
@@ -35,6 +38,7 @@ public class PanelButton : MonoBehaviour
         if (!isInUse && Input.GetMouseButtonDown(0))
         {
             OnPress?.Invoke(1f);
+            unityOnPress?.Invoke();
             state = States.MovingDown;
             isPressed = true;
             timer = 0;

@@ -43,7 +43,6 @@ public class UIManager : MonoBehaviour {
         }
         var questCont = _sidebar.Q("QuestContainer");
         questCont.Clear();
-        Debug.Log($"Has active quests: {JournalManager.T.HasaActiveQuests}");
         if(JournalManager.T.HasaActiveQuests)
             foreach(var q in JournalManager.T.GetQuestDescriptions())
                 questCont.Add(new Label(q));
@@ -58,7 +57,7 @@ public class UIManager : MonoBehaviour {
             _doc.rootVisualElement.Add(el);
             el.style.width = _doc.rootVisualElement.layout.width;
             el.style.height = _doc.rootVisualElement.layout.height;
-            ControlManager.EnterMode(ControlMode.UI);
+            ControlManager.EnterMode(ControlManager.MakeUIController());
         });
         return el;
     }
@@ -72,7 +71,7 @@ public class UIManager : MonoBehaviour {
     }
     public void Close(){
         //_doc.enabled = false;
-        ControlManager.EnterMode(ControlMode.World);
+        ControlManager.EnterMode(ControlManager.MakeWorldController());
     }
     void Awake(){
         if(T != null){

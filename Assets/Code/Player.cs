@@ -10,6 +10,7 @@ public class Player : MonoBehaviour, IMovable
     public static Vector3 Position => T.transform.position;
     CharacterController ch;
     Targeter _target;
+    public Targeter Target => _target;
     Outfit _outfit;
     public Outfit Outfit => _outfit;
     float yMotion = 0;
@@ -177,10 +178,11 @@ public class Player : MonoBehaviour, IMovable
 
     private void Update()
     {
-        if (ControlManager.Mode != ControlMode.World)
-            return;
-        if(Input.GetKeyDown(KeyCode.F))
+
+        if(ControlManager.Mode.CanTarget && Input.GetKeyDown(KeyCode.F))
             _target.Target?.Interact();
+        if(!ControlManager.Mode.UseWorldMovement)
+            return;
         if (Input.GetKeyDown(KeyCode.Alpha1))
             ThrowBrick();
         if (Input.GetKeyDown(KeyCode.Alpha2))

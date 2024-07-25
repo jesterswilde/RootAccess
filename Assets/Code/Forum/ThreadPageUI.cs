@@ -4,10 +4,11 @@ using UnityEngine.UIElements;
 namespace ForumN
 {
     public class ThreadPageUI : PageUI {
-        Thread _thread => Forum.T.Navigation.CurrentThread;
+        Thread _thread;
         VisualElement _container;
         public override void Show(ForumUI forumUI) {
             base.Show(forumUI);
+            _thread = forumUI.Navigation.CurrentThread;
             _container = new VisualElement();
             _container.AddToClassList("threadPage");
             _root.Add(_container);

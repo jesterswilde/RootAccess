@@ -140,7 +140,7 @@ public class TerminalUITK : MonoBehaviour{
     }
     private void Update()
     {
-        if (ControlManager.Mode != ControlMode.Terminal)
+        if (ControlManager.Mode.Mode != ControlMode.Terminal)
             return;
         Listen();
     }

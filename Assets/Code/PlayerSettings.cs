@@ -7,5 +7,6 @@ public class PlayerSettings : ScriptableObject
     public bool InvertCamera = false;
     public float MoveSpeed = 7;
     public float SprintSpeed = 12;
+    public float ClimbSpeed = 4;
     public float JumpPower = 10; 
 }

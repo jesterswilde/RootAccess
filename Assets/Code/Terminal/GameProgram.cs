@@ -29,6 +29,7 @@ public abstract class GameProgram : GameFile
         return base.MatchesName(name);
     }
     public virtual string TickProcess(GameProcess process) => "";
+    public virtual string PassTimePeriod(GameProcess process, int periods)=> "";
     public virtual string CompleteProcess(GameProcess process) => "";
     public virtual void HandleUserInput(string input, GameProcess process){}
 }

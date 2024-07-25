@@ -1,0 +1,40 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UITK/forum.uss?fileID=7433441132597879392&amp;guid=37af07c6074a29e4a82ca487d9c84995&amp;type=3#forum" />
+    <ui:VisualElement name="Body" class="body text">
+        <ui:VisualElement name="Header" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0);">
+            <ui:Label tabindex="-1" text="CTL Board" display-tooltip-when-elided="true" name="Title" class="text" style="justify-content: flex-start; align-self: center; font-size: 34px; -unity-font-style: bold;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Page" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+            <ui:VisualElement name="Container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;">
+                <ui:VisualElement name="TitleBox" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); align-items: center; font-size: 18px;">
+                    <ui:Label tabindex="-1" text="The Observatory" display-tooltip-when-elided="true" name="Title" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Post" class="post" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                    <ui:VisualElement name="Row1">
+                        <ui:Label tabindex="-1" text="Anthrax" display-tooltip-when-elided="true" name="username" class="col-1" />
+                        <ui:Label tabindex="-1" text="Subject: The Observator | Post 1 |  7/26/88" display-tooltip-when-elided="true" name="postinfo" class="info col-2" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Row2" style="background-color: rgba(0, 0, 0, 0);">
+                        <ui:VisualElement name="VisualElement" class="col-1 userDetails" style="background-color: rgba(0, 0, 0, 0);">
+                            <ui:VisualElement name="Avatar" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: resource(&apos;Avatars/trollface&apos;); width: 80px; height: 80px;" />
+                            <ui:Label tabindex="-1" text="&lt;b&gt;Role : &lt;/b&gt;Hacker&#x9;" display-tooltip-when-elided="true" />
+                        </ui:VisualElement>
+                        <ui:Label tabindex="-1" text="The observatory is not going to be used on saturday but there is an exquisite opportunitey for someone " display-tooltip-when-elided="true" name="Content" enable-rich-text="false" class="col-2 content" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Post" class="post" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                    <ui:VisualElement name="Row1">
+                        <ui:Label tabindex="-1" text="RobertTables" display-tooltip-when-elided="true" name="username" class="col-1" />
+                        <ui:Label tabindex="-1" text="Subject: The Observator | Post 1 |  7/26/88" display-tooltip-when-elided="true" name="postinfo" class="info col-2" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Row2" style="background-color: rgba(0, 0, 0, 0);">
+                        <ui:VisualElement name="VisualElement" class="col-1 userDetails" style="background-color: rgba(0, 0, 0, 0);">
+                            <ui:Label tabindex="-1" text="&lt;b&gt;Role : &lt;/b&gt; SysAdmin&#x9;" display-tooltip-when-elided="true" />
+                        </ui:VisualElement>
+                        <ui:Label tabindex="-1" text="The observatory is not going to be used on saturday but there is an exquisite opportunitey for someone " display-tooltip-when-elided="true" name="Content" enable-rich-text="false" class="col-2 content" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -27,7 +27,7 @@ public class PRG_SCP : GameProgram
             ProgramPath = GetPath(),
             FilePath = file.GetPath(),
             WorkRequired = file.FileSize,
-            DaysRequired = file.FileSize / 1000,
+            TimePeriodsRequired = file.FileSize / 1000,
             IsIdle = false,
             Node = isLocal ? term.FS : term.Node,
             Destination = isLocal ? term.Node : term.FS,

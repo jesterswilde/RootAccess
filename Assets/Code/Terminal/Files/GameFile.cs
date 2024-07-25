@@ -1,8 +1,9 @@
 ﻿#pragma warning disable 0649
 using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
-public abstract class GameFile : MonoBehaviour
+public abstract class GameFile : SerializedMonoBehaviour
 {
     [HideInInspector]
     public bool IsOwned = false;

@@ -7,10 +7,12 @@ namespace ForumN
     public class HomePageUI : PageUI {
         VisualElement _container;
         List<Thread> _threads = new();
+        ForumUI _parent;
         public override void Show(ForumUI forumUI) {
             base.Show(forumUI);
             _container = new VisualElement();
             _container.AddToClassList("homePage");
+            _parent = forumUI;
             _root.Add(_container);
             StubThreads();
             AddThreadsToForumUI();
@@ -18,7 +20,7 @@ namespace ForumN
         void AddThreadsToForumUI()
         {
             foreach (var thread in _threads) {
-                var threadSummaryUI = new ThreadSummaryUI(thread);
+                var threadSummaryUI = new ThreadSummaryUI(thread, _parent.Navigation);
                 _container.Add(threadSummaryUI);
             }
         }

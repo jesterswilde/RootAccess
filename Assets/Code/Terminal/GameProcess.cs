@@ -10,10 +10,10 @@ public class GameProcess
     public Node Node;
     public float WorkRequired;
     public float WorkDone;
-    public float DaysRequired;
-    public float DaysPassed;
-    public bool IsComplete => DaysPassed >= DaysRequired && WorkDone >= WorkRequired;
-    public float Progress => DaysRequired > 0 ? DaysPassed / DaysRequired : WorkDone / WorkRequired;
+    public float TimePeriodsRequired;
+    public float TimePeriodsPassed;
+    public bool IsComplete => TimePeriodsPassed >= TimePeriodsRequired && WorkDone >= WorkRequired;
+    public float Progress => TimePeriodsRequired > 0 ? TimePeriodsPassed / TimePeriodsRequired : WorkDone / WorkRequired;
     public bool RequiresUserInput = false;
     public bool HasLoadingBar = false;
     public static GameProcess NullProcess() => new GameProcess() { IsIdle = true };

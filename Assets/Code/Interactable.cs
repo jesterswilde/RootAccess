@@ -112,6 +112,5 @@ public class Interactable : MonoBehaviour
         _playerDetector.OnBlocked += PlayerEnter;
         _playerDetector.OnUnblocked += PlayerExit;
     }
-
 }
 

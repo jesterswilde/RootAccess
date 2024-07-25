@@ -18,12 +18,12 @@ public class PanelManager : MonoBehaviour{
     public static (int, PanelSettings settings) Link(UIDocument doc, Camera cam = null){
         if(cam == null)
             cam = T._defaultCam;
-        PanelSettings settings = null;
+        PanelSettings panel = null;
         RenderTexture rend = null;
         if(T._inactivePanels.Count > 0)
-            (settings, rend) = T._inactivePanels.Dequeue();
+            (panel, rend) = T._inactivePanels.Dequeue();
         else if(T._unusedPanels.Count > 0){
-            settings = T._unusedPanels.Dequeue();
+            panel = T._unusedPanels.Dequeue();
         }else
             throw new System.Exception("No more panels available");
 
@@ -32,11 +32,12 @@ public class PanelManager : MonoBehaviour{
             rend = new RenderTexture(T._defaultSize, T._defaultSize, 24);
             rend.Create();
         }
-        settings.targetTexture = rend;
-        settings.SetScreenToPanelSpaceFunction(T._makeTranslationFunction(cam, settings));
-        doc.panelSettings = settings;
-        T._activePanels[index] = (settings, rend);
-        return (index, settings);
+        Debug.Log("Linking panel: " + index);
+        panel.targetTexture = rend;
+        panel.SetScreenToPanelSpaceFunction(T._makeTranslationFunction(cam, panel));
+        doc.panelSettings = panel;
+        T._activePanels[index] = (panel, rend);
+        return (index, panel);
     }
     public static void Unlink(int index){
         if(T._activePanels.ContainsKey(index)){
@@ -76,6 +77,8 @@ public class PanelManager : MonoBehaviour{
 
             pixelUV.x *= targetTexture.width;
             pixelUV.y *= targetTexture.height;
+
+            Debug.Log("pixelUV: " + pixelUV);   
 
             return pixelUV;
         };

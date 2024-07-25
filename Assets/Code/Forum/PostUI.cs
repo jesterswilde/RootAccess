@@ -23,7 +23,7 @@ namespace ForumN
             row1.Add(postHeading);
 
             var row2 = new VisualElement();
-            var user = Forum.T.GetUser(post.Username);
+            var user = ForumManager.T.GetUser(post.Username);
             var userDetails = new VisualElement();
             userDetails.AddToClassList("col-1");
             userDetails.AddToClassList("userDetails");

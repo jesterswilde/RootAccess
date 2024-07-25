@@ -28,6 +28,10 @@ public class Targeter {
         else
             Target = null;
     }
+    public void ClearTarget(){
+        Target = null;
+    
+    }
 
     public void Update(){
         CheckTarget();

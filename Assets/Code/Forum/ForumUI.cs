@@ -5,12 +5,12 @@ using static ForumN.Navigation;
 
 namespace ForumN
 {
-    public class ForumUI : MonoBehaviour {
-        public Navigation Navigation => Forum.T.Navigation;
-        [SerializeField]
-        UIDocument document;
+    public class ForumUI : MonoBehaviour, IUIController {
+        public Navigation Navigation {get; private set;}
+        UIDocument _doc;
         PageUI _currentPage;
-        public VisualElement PageRoot => document.rootVisualElement;
+        public VisualElement PageRoot;
+        VisualElement _root => _doc.rootVisualElement; 
 
         void PageChanged(Navigation navigation){
             LoadPage(navigation.CurrentPage);
@@ -23,10 +23,21 @@ namespace ForumN
                 _ => throw new System.NotImplementedException()
             };
         }
-        void Start(){
+        public void Initialize(UIDocument doc)
+        {
+            _doc = doc;
+            Navigation = new Navigation();
             Navigation.OnPageChange += PageChanged;
+            PageRoot = _root.Q<VisualElement>("Page");
+            _root.Q<VisualElement>("Title")?.RegisterCallback<ClickEvent>(e => Navigation.CurrentPage = Page.ForumHome);
             LoadPage(Navigation.CurrentPage);
-            PageRoot.Q<VisualElement>("#Title").RegisterCallback<ClickEvent>(e => Navigation.CurrentPage = Page.ForumHome);
+        }
+
+        public void Teardown()
+        {
+            _doc = null;
+            Navigation.OnPageChange -= PageChanged;
+            Navigation = null;
         }
     }
 }
