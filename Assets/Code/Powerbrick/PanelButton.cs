@@ -31,12 +31,10 @@ public class PanelButton : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (Input.GetMouseButtonUp(0) && isPressed)
-        {
+        if (Input.GetMouseButtonUp(0) && isPressed) {
             isPressed = false;
         }
-        if (!isInUse && Input.GetMouseButtonDown(0))
-        {
+        if (!isInUse && Input.GetMouseButtonDown(0)){
             OnPress?.Invoke(1f);
             unityOnPress?.Invoke();
             state = States.MovingDown;

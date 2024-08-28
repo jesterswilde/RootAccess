@@ -184,6 +184,42 @@ public static class UnityExtensions
         return max;
     }
 
+    public static T MinBy<T>(this IEnumerable<T> list, Func<T, float> selector)
+    {
+        if(list.Count() == 0)
+            return default(T);
+        T min = default(T);
+        float minVal = float.MaxValue;
+        foreach (var item in list)
+        {
+            var val = selector(item);
+            if(val < minVal)
+            {
+                minVal = val;
+                min = item;
+            }
+        }
+        return min;
+    }
+    public static T MinBy<T>(this IEnumerable<T> list, Func<T, T, float> selector)
+    {
+        if(list.Count() == 0)
+            return default(T);
+        T min = default(T);
+        bool first = true;
+        foreach (var item in list)
+        {
+            if(first)
+            {
+                min = item;
+                first = false;
+                continue;
+            }
+            if(selector(item, min) < 0)
+                min = item;
+        }
+        return min;
+    }
     //From https://stackoverflow.com/questions/49190830/is-it-possible-for-string-split-to-return-tuple
     public static void Deconstruct<T>(this IList<T> list, out T first, out IList<T> rest) {
 
