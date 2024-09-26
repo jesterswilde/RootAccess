@@ -6,7 +6,7 @@ using System.Linq;
 public class PRG_Hack : GameProgram
 {
     [SerializeField]
-    List<Hacks> hackType;
+    List<Hacks> _hackTypes;
     [SerializeField]
     float speed = 1;
 
@@ -15,23 +15,29 @@ public class PRG_Hack : GameProgram
     {
         var curPermission = process.Node.Role;
         string result = $"{TColor.Error}Failure{TColor.Close} | This node was not vulnerable to Hack ${FileName} failed to raise permissions.";
-        if(curPermission == Permission.Guest)
-        {
-            var success = hackType.Any(hack => process.Node.AdminVulnerabilities.Any(vuln => vuln == hack));
-            if (success)
-            {
-                process.Node.ElevateRole(Permission.Admin);
-                result = $"{TColor.Access}Success{TColor.Close} | Hack: {FileName} successfully raised your role to {TColor.Admin}Admin{TColor.Close}";
-                curPermission = process.Node.Role;
+        if(curPermission == Permission.Guest){
+            bool didElevate = false;
+            foreach(var hack in _hackTypes){
+                foreach(var sVul in process.Node.AdminSoftwareVulns)
+                    didElevate = didElevate || sVul == hack;
+                foreach(var hVul in process.Node.AdminHardwareVulns)
+                    didElevate = didElevate || hVul == hack;
             }
-        }
-        if(curPermission == Permission.Admin)
-        {
-            var success = hackType.Any(hack => process.Node.RootVulnerabilities.Any(vuln => vuln == hack));
-            if (success)
-            {
+            if(didElevate){
+                process.Node.ElevateRole(Permission.Admin);
+                result = $"{TColor.Access}Success{TColor.Close} | Hack ${FileName} successfully raised permissions of ${process.Node.CurrentUser.Username} to ${TColor.Admin}Admin${TColor.Close}";
+            }
+        }if(curPermission == Permission.Admin){
+            bool didElevate = false;
+            foreach(var hack in _hackTypes){
+                foreach(var sVul in process.Node.RootSoftwareVulns)
+                    didElevate = didElevate || sVul == hack;
+                foreach(var hVul in process.Node.RootHardwareVulns)
+                    didElevate = didElevate || hVul == hack;
+            }
+            if(didElevate){
                 process.Node.ElevateRole(Permission.Root);
-                result = $"{TColor.Access}Success{TColor.Close} | Hack: ${FileName} successfully raised your role to {TColor.Root}Root{TColor.Close}";
+                result = $"{TColor.Access}Success{TColor.Close} | Hack ${FileName} successfully raised permissions of ${process.Node.CurrentUser.Username} to ${TColor.Root}Root${TColor.Close}";
             }
         }
         return result;

@@ -28,8 +28,7 @@ public class PRG_Login : GameProgram
         return result;
     }
     public override void HandleUserInput(string input, GameProcess process){
-        var loginProcess = process as LoginProcess;
-        if(loginProcess == null)
+        if (process is not LoginProcess loginProcess)
             throw new TerminalError("Invalid process type");
         string text;
         bool endProcess;

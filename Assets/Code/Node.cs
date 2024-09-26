@@ -42,7 +42,8 @@ public class Node : MonoBehaviour
         }set {
             _currentUser = value;
     }}
-    public Permission Role => _users.MaxBy(u => (float)u.Role).Role;
+    //public Permission Role => _users.MaxBy(u => (float)u.Role).Role;
+    public Permission Role => _currentUser.Role;
     [SerializeField]
     List<User> _users;
     public List<User> Users => _users;
@@ -57,11 +58,17 @@ public class Node : MonoBehaviour
     int security = 30;
     public int Security => security;
     [SerializeField]
-    List<Hacks> adminVulnerabilities;
-    public List<Hacks> AdminVulnerabilities => adminVulnerabilities;
+    List<Hacks> _adminSoftwareVulns;
+    public List<Hacks> AdminSoftwareVulns => _adminSoftwareVulns;
     [SerializeField]
-    List<Hacks> rootVulnerabilities;
-    public List<Hacks> RootVulnerabilities => rootVulnerabilities;
+    List<Hacks> _adminHardwareVulns;
+    public List<Hacks> AdminHardwareVulns => _adminHardwareVulns;
+    [SerializeField]
+    List<Hacks> _rootSoftwareVulns;
+    public List<Hacks> RootSoftwareVulns => _rootSoftwareVulns;
+    [SerializeField]
+    List<Hacks> _rootHardwareVulns;
+    public List<Hacks> RootHardwareVulns => _rootHardwareVulns;
     public string ElevateRole(Permission perm)
     {
         if(_currentUser.Username == "Guest"){

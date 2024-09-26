@@ -20,7 +20,7 @@ public class PRG_Pipe : GameProgram
     {
         GameObject go = new GameObject();
         go.name = $"Pipe_{outputFile.FileName}_{inputFile.FileName}";
-        var pipe = go.AddComponent<PipeFile>();
+        var pipe = go.AddComponent<PipeDaemon>();
         pipe.FileName = outputFile.FileName + "|" + inputFile.FileName;
         pipe.IsFound = true;
         pipe.Setup(inputFile.Input, outputFile.Output, node);

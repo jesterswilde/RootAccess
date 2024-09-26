@@ -1,7 +1,7 @@
 #pragma warning disable 0649
 using UnityEngine;
 
-public class PipeFile : GameDaemon{
+public class PipeDaemon : GameDaemon{
     [SerializeField]
     PipeInput _input;
     public PipeInput Input {get => _input; set{

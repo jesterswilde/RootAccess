@@ -50,11 +50,9 @@ public class Elevator : SerializedMonoBehaviour {
             return;
         var diff = Sys.GetFloorElevation(floorName) - transform.position.y;
         if((diff < 0 && State == ElevatorState.UP) || (diff > 0 && State == ElevatorState.DOWN)){
-            Debug.Log("Inserted into otherDirqueue");
             var index = InsertionIndexOfFloor(floorName, _otherDirectionQueue);
             _otherDirectionQueue.Insert(index, floorName);
         }else{
-            Debug.Log("Inserted into queue");
             var index = InsertionIndexOfFloor(floorName, _queue);
             _queue.Insert(index, floorName);
         }
@@ -186,6 +184,8 @@ public class Elevator : SerializedMonoBehaviour {
         _rightDoorCloseTrans = new GameObject().transform;
         _rightDoorCloseTrans.parent = transform;
         _rightDoorCloseTrans.position = _rightDoor.position;
+    }
+    void Start(){
         SnapToNearestFloor();
     }
 }
