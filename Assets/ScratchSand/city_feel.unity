@@ -3398,8 +3398,10 @@ MonoBehaviour:
   files: []
   connections: []
   security: 30
-  adminVulnerabilities: 04000000
-  rootVulnerabilities: 00000000
+  _adminSoftwareVulns: 
+  _adminHardwareVulns: 
+  _rootSoftwareVulns: 
+  _rootHardwareVulns: 
 --- !u!135 &139620988
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5657,8 +5659,10 @@ MonoBehaviour:
   files: []
   connections: []
   security: 200
-  adminVulnerabilities: 03000000
-  rootVulnerabilities: 02000000
+  _adminSoftwareVulns: 
+  _adminHardwareVulns: 
+  _rootSoftwareVulns: 
+  _rootHardwareVulns: 
 --- !u!135 &287967329
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14229,8 +14233,10 @@ MonoBehaviour:
   files: []
   connections: []
   security: 30
-  adminVulnerabilities: 00000000
-  rootVulnerabilities: 01000000
+  _adminSoftwareVulns: 
+  _adminHardwareVulns: 
+  _rootSoftwareVulns: 
+  _rootHardwareVulns: 
 --- !u!135 &595571504
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -19881,8 +19887,10 @@ MonoBehaviour:
   files: []
   connections: []
   security: 20
-  adminVulnerabilities: 03000000
-  rootVulnerabilities: 01000000
+  _adminSoftwareVulns: 
+  _adminHardwareVulns: 
+  _rootSoftwareVulns: 
+  _rootHardwareVulns: 
 --- !u!135 &913304494
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -21913,8 +21921,10 @@ MonoBehaviour:
   files: []
   connections: []
   security: 10
-  adminVulnerabilities: 04000000
-  rootVulnerabilities: 04000000
+  _adminSoftwareVulns: 
+  _adminHardwareVulns: 
+  _rootSoftwareVulns: 
+  _rootHardwareVulns: 
 --- !u!135 &991567382
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -22221,6 +22231,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 870432961, guid: 6a58f320868c61e46a1b3e0f063676f0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 870432961, guid: 6a58f320868c61e46a1b3e0f063676f0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.224
+      objectReference: {fileID: 0}
+    - target: {fileID: 870432961, guid: 6a58f320868c61e46a1b3e0f063676f0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.61
+      objectReference: {fileID: 0}
     - target: {fileID: 1231605426084041220, guid: 6a58f320868c61e46a1b3e0f063676f0,
         type: 3}
       propertyPath: serializationData.Prefab
@@ -23232,8 +23254,10 @@ MonoBehaviour:
   files: []
   connections: []
   security: 100
-  adminVulnerabilities: 04000000
-  rootVulnerabilities: 00000000
+  _adminSoftwareVulns: 
+  _adminHardwareVulns: 
+  _rootSoftwareVulns: 
+  _rootHardwareVulns: 
 --- !u!135 &1032513443
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -24470,8 +24494,10 @@ MonoBehaviour:
   files: []
   connections: []
   security: 300
-  adminVulnerabilities: 02000000
-  rootVulnerabilities: 01000000
+  _adminSoftwareVulns: 
+  _adminHardwareVulns: 
+  _rootSoftwareVulns: 
+  _rootHardwareVulns: 
 --- !u!135 &1095237017
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -29844,8 +29870,10 @@ MonoBehaviour:
   files: []
   connections: []
   security: 350
-  adminVulnerabilities: 04000000
-  rootVulnerabilities: 04000000
+  _adminSoftwareVulns: 
+  _adminHardwareVulns: 
+  _rootSoftwareVulns: 
+  _rootHardwareVulns: 
 --- !u!135 &1220451832
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -34603,8 +34631,10 @@ MonoBehaviour:
   files: []
   connections: []
   security: 10
-  adminVulnerabilities: 04000000
-  rootVulnerabilities: 04000000
+  _adminSoftwareVulns: 
+  _adminHardwareVulns: 
+  _rootSoftwareVulns: 
+  _rootHardwareVulns: 
 --- !u!135 &1489180894
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -40233,8 +40263,10 @@ MonoBehaviour:
   files: []
   connections: []
   security: 100
-  adminVulnerabilities: 00000000
-  rootVulnerabilities: 03000000
+  _adminSoftwareVulns: 
+  _adminHardwareVulns: 
+  _rootSoftwareVulns: 
+  _rootHardwareVulns: 
 --- !u!135 &1735288434
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -42495,7 +42527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _elevators: []
   _openCloseSpeed: 1
-  _elevatorSpeed: 4
+  _elevatorSpeed: 15
   _openDelay: 10
   _floorDelay: 20
   _floors:
@@ -42689,8 +42721,10 @@ MonoBehaviour:
   files: []
   connections: []
   security: 100
-  adminVulnerabilities: 00000000
-  rootVulnerabilities: 04000000
+  _adminSoftwareVulns: 
+  _adminHardwareVulns: 
+  _rootSoftwareVulns: 
+  _rootHardwareVulns: 
 --- !u!135 &1844164147
 SphereCollider:
   m_ObjectHideFlags: 0
